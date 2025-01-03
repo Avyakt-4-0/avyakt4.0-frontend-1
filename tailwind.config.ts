@@ -13,7 +13,9 @@ export default {
         foreground: "var(--foreground)",
       },
       backgroundImage: {
-        hero: "url('/images/bg.svg')",
+        hero: "url('/images/bg.jpg')",
+        event_bg: "url('/images/background.svg')",
+        card_border_bg: "url('/images/card-border.svg')",
       },
     },
   },
