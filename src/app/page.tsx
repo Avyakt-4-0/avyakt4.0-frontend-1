@@ -3,6 +3,7 @@ import localFont from 'next/font/local'
 import Image from 'next/image';
 import { Jersey_10 } from 'next/font/google'
 import Card from '@/components/card';
+import Guests from '@/components/guests';
 
 // Font files can be colocated inside of `pages`
 const titleFont = localFont({ src: '../../public/fonts/ARB.ttf' })
@@ -10,7 +11,8 @@ const usangelFont = localFont({ src: '../../public/fonts/usangel.ttf' })
 const farFromHomeComingFont = localFont({ src: '../../public/fonts/Far-From Homecoming.otf' })
 const yellowPeasFont = localFont({ src: '../../public/fonts/Yellow Peas.ttf' })
 const jerseyFont = Jersey_10({
-  weight: '400'
+  weight: '400',
+  subsets: ['latin'],
 })
 const aerionFont = localFont({ src: '../../public/fonts/aerion-bold.otf' })
 const eventNames = ['technical', 'non-technical', 'cultural', 'others']
@@ -52,7 +54,7 @@ export default function Home() {
             className="absolute top-[1620]"
           />
         </div>
-        <div className={`${jerseyFont.className} leading-[85.38px] text-[#F8861E] p-12`}>
+        <div className={`${jerseyFont.className} leading-[85.38px] text-[#F8861E] p-12 `}>
           <h1 className="text-[128px]">
             Code, Create,<br /> Celebrate
           </h1>
@@ -68,9 +70,17 @@ export default function Home() {
             ))
           }
         </div>
-        <h1 className={`${aerionFont.className} text-[40px] text-[#F8861E] drop-shadow-sm shadow-[#F8861E] pl-8`}>21 / 02 /2025  to  22 / 02 / 2025 AVYAKT 4.0 </h1>
+        <h1 className={`${aerionFont.className} text-[40px] text-[#F8861E] drop-shadow-sm pl-8`}>21 / 02 /2025  to  22 / 02 / 2025 AVYAKT 4.0 </h1>
       </div>
 
+      <div className='bg-hero bg-repeat-y min-h-screen lg:bg-contain bg-contain'>
+        <h1 className={`${farFromHomeComingFont.className} text-[64px] text-center`}>Guests and Speaker</h1>
+        <Guests />
+        <div className=''>
+          <Image src='/images/club.png' alt="hero-bg" width={1500} height={400} />
+
+        </div>
+      </div>
     </div>
   );
 }

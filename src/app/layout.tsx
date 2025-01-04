@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ObserverProvider from "@/components/ObserverProvider";
 
 export const metadata: Metadata = {
   title: "Avyakt 4.0",
@@ -14,7 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <ObserverProvider>
+          {children}
+        </ObserverProvider>
       </body>
     </html>
   );
