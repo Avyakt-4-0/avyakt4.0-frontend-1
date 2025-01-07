@@ -5,6 +5,7 @@ import { Jersey_10 } from 'next/font/google'
 import { IBM_Plex_Mono } from 'next/font/google'
 import Card from '@/components/card';
 import Guests from '@/components/guests';
+import Multiverse from '@/components/multiverse';
 // Font files can be colocated inside of `pages`
 const titleFont = localFont({ src: '../../public/fonts/ARB.ttf' })
 const usangelFont = localFont({ src: '../../public/fonts/usangel.ttf' })
@@ -24,6 +25,7 @@ const eventNames = ['technical', 'non-technical', 'cultural', 'others']
 export default function Home() {
   return (
     <div className='bg-hero bg-contain'>
+
       <div className='min-h-screen border-[#F8861E] border-4'>
         <NavBar />
         <div className='bg-loki bg-contain bg-no-repeat h-[800px] min-w-[813px] bg-center'>
@@ -52,13 +54,23 @@ export default function Home() {
         />
       </div>
       {/* About event section */}
-      <div className='flex flex-col justify-center items-center gap-4'>
+      <div className='flex flex-col justify-center items-center gap-4 my-24 h-[1000px]'>
         <p className={`${ibmFont.className} text-start text-shadow-lg max-w-[90%] text-[48px] leading-[64.32px] h-[847px] intersect:motion-preset-blur-right  motion-duration-2000`}>
           Welcome to CSE FEST '25, the annual celebration of innovation, technology, and collaboration hosted by the Department of Computer Science and Engineering.
           This year's fest is set to be bigger and better, bringing together students, tech enthusiasts, and industry leaders to explore groundbreaking ideas and showcase talent. From hackathons and coding challenges to tech talks and interactive workshops, CSE FEST '25 offers something for everyone.
           Whether you're here to compete, learn, or network, this event is your gateway to the world of cutting-edge technology and limitless possibilities. Join us as we innovate, code, and excel together!
         </p>
       </div>
+
+      {/* you tube video part */}
+      <div className='flex justify-center items-center mt-48'>
+        <div className='w-[1107px] h-[635px] border-[#F8861E] border-8 rounded-[83px]'>
+          {/* here we are adding youtube video */}
+        </div>
+      </div>
+      {/* avyakt multiverse */}
+      <Multiverse />
+
 
       {/* events section */}
       <div className="bg-event_bg bg-contain h-[1000px] min-w-full flex flex-col items-start gap-4">

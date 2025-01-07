@@ -15,6 +15,7 @@ export default {
       backgroundImage: {
         hero: "url('/images/bg.svg')",
         loki: "url('/images/loki.svg')",
+        multiverse: "url('/images/multiverse.svg')",
         event_bg: "url('/images/background.svg')",
         card_border_bg: "url('/images/card-border.svg')",
         club_bg: "url('/images/club.png')",
@@ -28,6 +29,9 @@ export default {
         default: "2px 2px 4px rgba(0, 0, 0, 0.3)",
         md: "4px 4px 8px rgba(0, 0, 0, 0.3)",
         lg: "6px 6px 12px rgba(0, 0, 0, 0.3)",
+      },
+      letterSpacing: {
+        widest: ".25em",
       },
     },
   },
