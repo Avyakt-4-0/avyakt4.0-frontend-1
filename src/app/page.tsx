@@ -6,6 +6,7 @@ import { IBM_Plex_Mono } from 'next/font/google'
 import Card from '@/components/card';
 import Guests from '@/components/guests';
 import Multiverse from '@/components/multiverse';
+import Clubs from '@/components/clubs';
 // Font files can be colocated inside of `pages`
 const titleFont = localFont({ src: '../../public/fonts/ARB.ttf' })
 const usangelFont = localFont({ src: '../../public/fonts/usangel.ttf' })
@@ -71,7 +72,11 @@ export default function Home() {
       {/* avyakt multiverse */}
       <Multiverse />
 
-
+      {/* college clubs */}
+      <div>
+        <h1 className={`${jerseyFont.className} text-[205px] text-[#FA861B] text-center`}>OUR CLUBS</h1>
+        <Clubs />
+      </div>
       {/* events section */}
       <div className="bg-event_bg bg-contain h-[1000px] min-w-full flex flex-col items-start gap-4">
 
