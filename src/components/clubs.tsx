@@ -16,7 +16,7 @@ export default function Clubs() {
     { name: 'club12', image: '/images/clubs/12.svg' },
     ]
     return (
-        <div className='grid grid-cols-4 lg:gap-12 bg-[#F5610D4D] border-8 border-[#F8861E] lg:w-[
+        <div className='grid grid-cols-4 lg:gap-8 bg-[#F5610D4D] border-8 border-[#F8861E] lg:w-[
 1506px] lg:mx-24'>
             {clubs.map((club, index) => (
                 <div key={index} className='lg:w-[206.17px] lg:h-[233.05px] '>
