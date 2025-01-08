@@ -8,14 +8,14 @@ const ibmFont = IBM_Plex_Mono({
 export default function NavBar() {
     const navItems = [{ 'name': "Events", 'link': '/events' }, { 'name': "Dev Team", 'link': '/dev-team' }, { 'name': "About Us", 'link': '/About-us' }]
     return (
-        <div className='flex justify-between p-8'>
+        <div className='flex justify-between lg:p-8 min-w-full p-2'>
             <div className='p-2'>
                 <Image src={'/images/logo.png'} alt='logo' width={60} height={60} />
             </div>
             {/* menu bar */}
             <div className='p-2' >
                 <div>
-                    <ul className='flex gap-4'>
+                    <ul className='lg:flex gap-4 hidden'>
                         {navItems.map((item, index) => {
                             return (
                                 <li key={index} className='text-[#F8861E] font-semibold text-2xl border-[#F8861E] border-2 p-1 bg-[#F5610D4D] w-[236px] '>
@@ -25,6 +25,9 @@ export default function NavBar() {
                         }
                         )}
                     </ul>
+                </div>
+                <div className='lg:hidden'>
+                    <Image src={'/images/menu.svg'} alt='menu' width={40} height={40} />
                 </div>
             </div>
         </div>

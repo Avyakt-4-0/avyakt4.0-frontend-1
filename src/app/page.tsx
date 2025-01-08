@@ -25,27 +25,27 @@ const eventNames = ['technical', 'non-technical', 'cultural', 'others']
 
 export default function Home() {
   return (
-    <div className='bg-hero bg-contain'>
+    <div className='bg-hero bg-contain min-w-full'>
 
-      <div className='min-h-screen border-[#F8861E] border-4'>
+      <div className='lg:min-h-screen border-[#F8861E] border-4 h-[560px]'>
         <NavBar />
-        <div className='bg-loki bg-contain bg-no-repeat h-[800px] min-w-[813px] bg-center'>
+        <div className='bg-loki bg-contain bg-no-repeat lg:h-[660px] h-[560px] lg:min-w-[813px] bg-center'>
           {/* intro section */}
-          <div className='flex flex-col justify-center items-center h-full'>
-            <div className='flex flex-col w-fit leading-[100.38px] mt-32'>
-              <div className='flex justify-center items-center h-full gap-4 lg:gap-24 text-[40px] lg:text-[160px]'>
+          <div className='flex flex-col justify-center items-center lg:h-[660px] h-[500px]'>
+            <div className='flex flex-col w-fit lg:leading-[100.38px]  mt-32'>
+              <div className='flex justify-center items-center h-full gap-4 lg:gap-24 text-[46px] lg:text-[160px] sm:leading-[54.32px]'>
                 <h1 className={`${titleFont.className} `}>AVYAKT</h1> <h1 className={`${usangelFont.className}`}> 4.0</h1>
               </div>
               <h2 className={`${usangelFont.className} text-center text-[10px] lg:text-[32px]`}>The most Awaited CSE Department Fest</h2>
             </div>
-            <div className={`flex justify-center gap-2 bg-[#F8861E] w-[327px] h-[36px] ${ibmFont.className} text-center text-[24px] rounded-lg`}>
-              <Image src='/images/google.svg' width={30} height={30} alt="google" />
-              <p className='text-black'>LOGIN WITH GOOGLE</p>
+            <div className={`flex justify-center items-center gap-2 bg-[#F8861E] lg:w-[327px] lg:h-[36px] ${ibmFont.className} text-center lg:text-[24px] text-sm rounded-lg mt-1 `}>
+              <Image src='/images/google.svg' width={30} height={30} alt="google" className='w-4 h-4' />
+              <p className='text-black p-1'>LOGIN WITH GOOGLE</p>
             </div>
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-start">
+      <div className="lg:w-full flex justify-start w-48">
         <Image
           src="/images/border.svg"
           width={400}
@@ -55,8 +55,8 @@ export default function Home() {
         />
       </div>
       {/* About event section */}
-      <div className='flex flex-col justify-center items-center gap-4 my-24 h-[1000px]'>
-        <p className={`${ibmFont.className} text-start text-shadow-lg max-w-[90%] text-[48px] leading-[64.32px] h-[847px] intersect:motion-preset-blur-right  motion-duration-2000`}>
+      <div className='flex flex-col justify-center items-center gap-4 lg:my-24 my-4 lg:h-[1000px] p-4 lg:p-0'>
+        <p className={`${ibmFont.className} text-start text-shadow-lg lg:max-w-[90%] lg:text-[48px] lg:leading-[64.32px] lg:h-[847px] intersect:motion-preset-blur-right  motion-duration-2000`}>
           Welcome to CSE FEST '25, the annual celebration of innovation, technology, and collaboration hosted by the Department of Computer Science and Engineering.
           This year's fest is set to be bigger and better, bringing together students, tech enthusiasts, and industry leaders to explore groundbreaking ideas and showcase talent. From hackathons and coding challenges to tech talks and interactive workshops, CSE FEST '25 offers something for everyone.
           Whether you're here to compete, learn, or network, this event is your gateway to the world of cutting-edge technology and limitless possibilities. Join us as we innovate, code, and excel together!
@@ -64,8 +64,8 @@ export default function Home() {
       </div>
 
       {/* you tube video part */}
-      <div className='flex justify-center items-center mt-48'>
-        <div className='w-[1107px] h-[635px] border-[#F8861E] border-8 rounded-[83px]'>
+      <div className='flex justify-center items-center lg:mt-48 p-2'>
+        <div className='lg:w-[1107px] lg:h-[635px] w-full h-[200px] border-[#F8861E] border-8 lg:rounded-[83px] rounded-[40px]'>
           {/* here we are adding youtube video */}
         </div>
       </div>
@@ -73,39 +73,10 @@ export default function Home() {
       <Multiverse />
 
       {/* college clubs */}
-      <div>
-        <h1 className={`${jerseyFont.className} text-[205px] text-[#FA861B] text-center`}>OUR CLUBS</h1>
+      <div className='p-2'>
+        <h1 className={`${jerseyFont.className} lg:text-[205px] text-[50px] text-[#FA861B] text-center`}>OUR CLUBS</h1>
         <Clubs />
-      </div>
-      {/* events section */}
-      <div className="bg-event_bg bg-contain h-[1000px] min-w-full flex flex-col items-start gap-4">
-
-        <div className={`${jerseyFont.className} leading-[85.38px] text-[#F8861E] p-12 `}>
-          <h1 className="text-[128px]">
-            Code, Create,<br /> Celebrate
-          </h1>
-          <h2 className="text-[96px]">
-            The CSE Fest is Here!
-          </h2>
-        </div>
-        {/* events cards */}
-        <div className='flex justify-around gap-4 w-full'>
-          {
-            eventNames.map((eventName, index) => (
-              <Card key={index} image={`/images/${eventName}.svg`} title={eventName} />
-            ))
-          }
-        </div>
-        <h1 className={`${aerionFont.className} text-[40px] text-[#F8861E] drop-shadow-sm pl-8`}>21 / 02 /2025  to  22 / 02 / 2025 AVYAKT 4.0 </h1>
-      </div>
-
-      <div className='bg-hero bg-repeat-y min-h-screen lg:bg-contain bg-contain'>
-        <h1 className={`${farFromHomeComingFont.className} text-[64px] text-center`}>Guests and Speaker</h1>
-        <Guests />
-        <div className=''>
-          <Image src='/images/club.png' alt="hero-bg" width={1500} height={400} />
-
-        </div>
+        <h1 className={`${ibmFont.className} lg:text-[40px] lg:mx-24 text-start pt-2`}>{"here are the clubs which collaborate with avyakt to make it more awesome".toUpperCase()} </h1>
       </div>
     </div>
   );
