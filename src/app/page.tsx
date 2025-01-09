@@ -7,6 +7,7 @@ import Card from '@/components/card';
 import Guests from '@/components/guests';
 import Multiverse from '@/components/multiverse';
 import Clubs from '@/components/clubs';
+import Footer from '@/components/footer';
 // Font files can be colocated inside of `pages`
 const titleFont = localFont({ src: '../../public/fonts/ARB.ttf' })
 const usangelFont = localFont({ src: '../../public/fonts/usangel.ttf' })
@@ -78,6 +79,9 @@ export default function Home() {
                 <Clubs />
                 <h1 className={`${ibmFont.className} lg:text-[40px] lg:mx-24 text-start pt-2 uppercase`}>here are the clubs which collaborate with avyakt to make it more awesome</h1>
             </div>
+
+            {/* footer */}
+            <Footer />
         </div>
     );
 }
