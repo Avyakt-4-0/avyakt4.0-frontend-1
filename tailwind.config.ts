@@ -40,5 +40,6 @@ export default {
     require("tailwindcss-motion"),
     require("tailwindcss-intersect"),
     require("tailwindcss-textshadow"),
+    require("@nauverse/tailwind-dot-grid-backgrounds"),
   ],
 } satisfies Config;

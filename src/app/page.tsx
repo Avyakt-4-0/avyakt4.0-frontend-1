@@ -8,6 +8,8 @@ import Guests from '@/components/guests';
 import Multiverse from '@/components/multiverse';
 import Clubs from '@/components/clubs';
 import Footer from '@/components/footer';
+import { signIn } from '../../auth';
+import { AuthButton } from '@/components/authButton';
 // Font files can be colocated inside of `pages`
 const titleFont = localFont({ src: '../../public/fonts/ARB.ttf' })
 const usangelFont = localFont({ src: '../../public/fonts/usangel.ttf' })
@@ -26,7 +28,7 @@ const eventNames = ['technical', 'non-technical', 'cultural', 'others']
 
 export default function Home() {
     return (
-        <div className='bg-hero bg-contain min-w-full'>
+        <div className='min-w-full'>
 
             <div className='lg:min-h-screen border-[#F8861E] border-4 h-[560px]'>
                 <NavBar />
@@ -39,10 +41,7 @@ export default function Home() {
                             </div>
                             <h2 className={`${usangelFont.className} text-center text-[10px] lg:text-[32px]`}>The most Awaited CSE Department Fest</h2>
                         </div>
-                        <div className={`flex justify-center items-center gap-2 bg-[#F8861E] lg:w-[327px] lg:h-[36px] ${ibmFont.className} text-center lg:text-[24px] text-sm rounded-lg mt-1 `}>
-                            <Image src='/images/google.svg' width={30} height={30} alt="google" className='w-4 h-4' />
-                            <p className='text-black p-1'>LOGIN WITH GOOGLE</p>
-                        </div>
+                        <AuthButton />
                     </div>
                 </div>
             </div>

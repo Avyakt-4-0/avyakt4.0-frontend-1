@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nauverse/tailwind-dot-grid-backgrounds": "^1.2.13",
     "@react-icons/all-files": "^4.1.0",
     "next": "15.1.3",
+    "next-auth": "^5.0.0-beta.25",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icon": "^1.0.0",
