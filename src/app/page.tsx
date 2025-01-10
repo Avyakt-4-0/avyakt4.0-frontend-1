@@ -54,7 +54,7 @@ export default function Home() {
                             </div>
                             <h2 className={`${usangelFont.className} text-center text-[10px] lg:text-[32px]`}>The most Awaited CSE Department Fest</h2>
                         </div>
-                        {!authStatus && <AuthButton />}
+                        {<AuthButton />}
                     </div>
                 </div>
             </div>
