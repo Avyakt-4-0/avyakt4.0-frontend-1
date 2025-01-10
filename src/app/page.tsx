@@ -1,3 +1,4 @@
+'use client'
 import NavBar from '@/components/nav-bar';
 import localFont from 'next/font/local'
 import Image from 'next/image';
@@ -8,8 +9,11 @@ import Guests from '@/components/guests';
 import Multiverse from '@/components/multiverse';
 import Clubs from '@/components/clubs';
 import Footer from '@/components/footer';
-import { signIn } from '../../auth';
+
 import { AuthButton } from '@/components/authButton';
+
+import { useEffect, useState } from 'react';
+import { checkIsAuthenticated } from '@/lib/auth/checkIsAutheticatedServerAction';
 // Font files can be colocated inside of `pages`
 const titleFont = localFont({ src: '../../public/fonts/ARB.ttf' })
 const usangelFont = localFont({ src: '../../public/fonts/usangel.ttf' })
@@ -25,14 +29,23 @@ const ibmFont = IBM_Plex_Mono({
 })
 const aerionFont = localFont({ src: '../../public/fonts/aerion-bold.otf' })
 const eventNames = ['technical', 'non-technical', 'cultural', 'others']
-
 export default function Home() {
-    return (
-        <div className='min-w-full'>
+    const [userName, setUsername] = useState<string | null>(null);
+    const [authStatus, setAuthStatus] = useState<boolean>(false);
+    useEffect(() => {
+        const fetchAuthStatus = async () => {
+            const authStatus = await checkIsAuthenticated();
+            setAuthStatus(authStatus);
 
-            <div className='lg:min-h-screen border-[#F8861E] border-4 h-[560px]'>
+        }
+        fetchAuthStatus();
+    }, [])
+    return (
+        <div className=' min-w-full'>
+            {/* hello{userName} */}
+            <div className='lg:min-h-screen border-[#F8861E] border-4'>
                 <NavBar />
-                <div className='bg-loki bg-contain bg-no-repeat lg:h-[660px] h-[560px] lg:min-w-[813px] bg-center'>
+                <div className='bg-loki bg-contain bg-no-repeat lg:min-w-[813px] bg-center min-h-full'>
                     {/* intro section */}
                     <div className='flex flex-col justify-center items-center lg:h-[660px] h-[500px]'>
                         <div className='flex flex-col w-fit lg:leading-[100.38px]  mt-32'>
@@ -41,7 +54,7 @@ export default function Home() {
                             </div>
                             <h2 className={`${usangelFont.className} text-center text-[10px] lg:text-[32px]`}>The most Awaited CSE Department Fest</h2>
                         </div>
-                        <AuthButton />
+                        {!authStatus && <AuthButton />}
                     </div>
                 </div>
             </div>
@@ -80,7 +93,7 @@ export default function Home() {
             </div>
 
             {/* footer */}
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 }

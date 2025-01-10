@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-grid-10-s-2-[#321b06]">
+      <body className="bg-grid-10-s-2-[#321b06] ">
         <ObserverProvider>
           {children}
         </ObserverProvider>

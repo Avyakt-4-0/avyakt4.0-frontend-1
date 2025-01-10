@@ -7,7 +7,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     async signIn({ user }) {
       const emailRegex =
         /^[0-9]{2}[a-z]{3}[0-9]{3}\.[a-z]+@[a-z]+\.[a-z]{2,}$/i;
-      if (emailRegex.test(user.email)) {
+      if (user.email && emailRegex.test(user.email)) {
         return true; // Allow sign-in
       } else {
         // Redirect to the sign-in page with an error message
