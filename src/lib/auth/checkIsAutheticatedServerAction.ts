@@ -2,10 +2,7 @@
 
 import { auth } from "@/auth";
 
-export const checkIsAuthenticated = async () => {
+export const checkIsAuthenticated = async (): Promise<boolean> => {
   const session = await auth();
-  if (session) {
-    return true;
-  }
-  return false;
+  return !!session;
 };

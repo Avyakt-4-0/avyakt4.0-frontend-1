@@ -14,6 +14,7 @@ import { AuthButton } from '@/components/authButton';
 
 import { useEffect, useState } from 'react';
 import { checkIsAuthenticated } from '@/lib/auth/checkIsAutheticatedServerAction';
+import { useSession } from 'next-auth/react';
 // Font files can be colocated inside of `pages`
 const titleFont = localFont({ src: '../../public/fonts/ARB.ttf' })
 const usangelFont = localFont({ src: '../../public/fonts/usangel.ttf' })
@@ -32,14 +33,7 @@ const eventNames = ['technical', 'non-technical', 'cultural', 'others']
 export default function Home() {
     const [userName, setUsername] = useState<string | null>(null);
     const [authStatus, setAuthStatus] = useState<boolean>(false);
-    useEffect(() => {
-        const fetchAuthStatus = async () => {
-            const authStatus = await checkIsAuthenticated();
-            setAuthStatus(authStatus);
-
-        }
-        fetchAuthStatus();
-    }, [])
+    const session = useSession()
     return (
         <div className=' min-w-full'>
             {/* hello{userName} */}
@@ -54,7 +48,7 @@ export default function Home() {
                             </div>
                             <h2 className={`${usangelFont.className} text-center text-[10px] lg:text-[32px]`}>The most Awaited CSE Department Fest</h2>
                         </div>
-                        {<AuthButton />}
+                        {session.status === 'unauthenticated' && <AuthButton />}
                     </div>
                 </div>
             </div>
@@ -93,7 +87,7 @@ export default function Home() {
             </div>
 
             {/* footer */}
-            {/* <Footer /> */}
+            <Footer />
         </div>
     );
 }
