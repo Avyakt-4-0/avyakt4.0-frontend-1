@@ -7,7 +7,6 @@ import localFont from 'next/font/local';
 import Link from 'next/link';
 import { getUserDetails } from '@/lib/auth/getUserDetailsServerAction'; // Assuming this fetches user details
 import { checkIsAuthenticated } from '@/lib/auth/checkIsAutheticatedServerAction';
-import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 const ibmFont = IBM_Plex_Mono({
     weight: '700',
@@ -38,6 +37,7 @@ export default function NavBar() {
 
     const navItems = [
         { name: 'Events', link: '/events' },
+        { name: 'Clubs', link: '/clubs' },
         { name: 'Dev Team', link: '/dev-team' },
         { name: 'About Us', link: '/about-us' },
     ];

@@ -88,13 +88,13 @@ export default function Gallery(props: GalleryProps) {
                 <div className="w-full max-w-7xl flex flex-col items-center">
                     <div className="w-full flex items-center justify-center gap-2 sm:gap-4 px-2">
 
-                        <div className="relative z-10 w-full max-w-3xl mx-auto">
+                        <div className="relative z-10 w-full max-w-1xl">
                             <HTMLFlipBook
                                 ref={flipBook}
                                 width={250}
                                 height={350}
                                 size="stretch"
-                                minWidth={200}
+                                minWidth={170}
                                 maxWidth={800}
                                 minHeight={300}
                                 maxHeight={500}

@@ -39,28 +39,43 @@ export default function Home() {
     return (
         <div className=' min-w-full'>
             {/* hello{userName} */}
-            <div className='lg:min-h-screen border-[#F8861E] border-4'>
+            <div className="relative lg:min-h-screen border-[#F8861E] border-4">
                 <NavBar />
-                <div className='bg-loki  bg-contain bg-no-repeat lg:min-w-[813px] bg-center min-h-full'>
-                    {/* intro section */}
-                    <div className='flex flex-col justify-center items-center lg:h-[660px] h-[500px]'>
-                        <div className='flex flex-col w-fit lg:leading-[100.38px]  mt-32'>
-                            <div className='flex justify-center items-center h-full gap-4 lg:gap-24 text-[46px] lg:text-[160px] sm:leading-[54.32px]'>
-                                <h1 className={`${usangelFont.className} `}>AVYAKT</h1> <h1 className={`${usangelFont.className}`}> 4.0</h1>
-                            </div>
-                            <h2 className={`${usangelFont.className} text-center text-[10px] lg:text-[32px]`}>The most Awaited CSE Department Fest</h2>
+
+                {/* Background image (lowest layer) */}
+                <Image
+                    src={"/images/loki.svg"}
+                    alt="loki"
+                    width={100}
+                    height={100}
+                    className="w-[400px] h-[400px] lg:w-[500px] lg:h-[700px] absolute bottom-0 right-1/2 translate-x-1/2 z-0 object-cover"
+                />
+
+                {/* Intro section (above image) */}
+                <div className="relative flex flex-col justify-center items-center lg:h-[660px] h-[500px] z-10">
+                    <div className="flex flex-col w-fit lg:leading-[100.38px] mt-32">
+                        <div className="flex justify-center items-center h-full gap-4 lg:gap-24 text-[46px] lg:text-[160px] sm:leading-[54.32px]">
+                            <h1 className={`${usangelFont.className}`}>AVYAKT</h1>
+                            <h1 className={`${usangelFont.className}`}>4.0</h1>
                         </div>
-                        {session.status === 'unauthenticated' && <AuthButton />}
+                        <h2
+                            className={`${usangelFont.className} text-center text-[10px] lg:text-[32px]`}
+                        >
+                            The most Awaited CSE Department Fest
+                        </h2>
                     </div>
+
+                    {session.status === "unauthenticated" && <AuthButton />}
                 </div>
             </div>
+
             <div className="lg:w-full flex justify-start w-48">
                 <Image
                     src="/images/border.svg"
                     width={400}
                     height={20}
                     alt="border"
-                    className=""
+                    className="z-10"
                 />
             </div>
             {/* About event section */}
@@ -68,7 +83,7 @@ export default function Home() {
                 style={{ gridTemplateColumns: '3fr 1fr', paddingLeft: "20px", paddingRight: "20px", textAlign: 'justify' }}>
 
                 <h1 className={`${ibmFont.className} text-shadow-lg lg:max-w-[90%] lg:text-[28px] lg:leading-[50.32px] lg:h-[847px] text-justify`}>
-                    <TextAnimate animation="fadeIn" by="word" duration={.1}>
+                    <TextAnimate animation="blurInDown" by="word" duration={.1} once={true}>
                         Welcome to CSE FEST '25, the annual celebration of innovation, technology, and collaboration hosted by the Department of Computer Science and Engineering.
                         This year's fest is set to be bigger and better, bringing together students, tech enthusiasts, and industry leaders to explore groundbreaking ideas and showcase talent.
                     </TextAnimate>
