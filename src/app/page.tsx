@@ -68,10 +68,9 @@ export default function Home() {
                 style={{ gridTemplateColumns: '3fr 1fr', paddingLeft: "20px", paddingRight: "20px", textAlign: 'justify' }}>
 
                 <h1 className={`${ibmFont.className} text-shadow-lg lg:max-w-[90%] lg:text-[28px] lg:leading-[50.32px] lg:h-[847px] text-justify`}>
-                    <TextAnimate animation="slideUp" by="word" duration={.1}>
+                    <TextAnimate animation="fadeIn" by="word" duration={.1}>
                         Welcome to CSE FEST '25, the annual celebration of innovation, technology, and collaboration hosted by the Department of Computer Science and Engineering.
-                        This year's fest is set to be bigger and better, bringing together students, tech enthusiasts, and industry leaders to explore groundbreaking ideas and showcase talent. From hackathons and coding challenges to tech talks and interactive workshops, CSE FEST '25 offers something for everyone.
-                        Whether you're here to compete, learn, or network, this event is your gateway to the world of cutting-edge technology and limitless possibilities. Join us as we innovate, code, and excel together!
+                        This year's fest is set to be bigger and better, bringing together students, tech enthusiasts, and industry leaders to explore groundbreaking ideas and showcase talent.
                     </TextAnimate>
                 </h1>
                 <div>
@@ -86,7 +85,13 @@ export default function Home() {
                 </div>
             </div>
             {/* avyakt multiverse */}
-            <Multiverse />
+            <section className='lg:mt-48'>
+                <div className="flex items-center gap-2" >
+                    <h1 className={`${ibmFont.className} lg:text-[48px] text-white pl-2`}>Click on the event type </h1>
+                    <Image src={"/images/click.svg"} width={15} height={15} alt="border" className="" />
+                </div>
+                <Multiverse />
+            </section>
 
             {/* college clubs */}
             <div className='p-2'>

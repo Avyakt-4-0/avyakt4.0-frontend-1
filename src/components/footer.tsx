@@ -12,30 +12,43 @@ import Link from "next/link";
 export default function Footer() {
     return (
         <>
-            <div className="footer w-full pt-40">
-                <Image src="/images/footer-logo.svg" width={1920} height={1080} alt="footer" />
+            <div className="relative footer w-full flex justify-center items-center overflow-hidden">
+                <Image
+                    src="/images/footer-logo.svg"
+                    width={1500}
+                    height={1080}
+                    alt="footer"
+                    className="z-10 absolute bottom-0 md:pt-[28rem] w-full md:max-w-full"
+                />
+                <Image
+                    src={"/images/loki-footer.svg"}
+                    width={700}
+                    height={800}
+                    alt="footer"
+                    className="z-0 w-full max-w-[90%] md:max-w-full h-[300px] lg:h-[900px]"
+                />
             </div>
-            <div className="lg:h-[900px] w-full bg-[#EF8713] flex flex-col justify-between pb-10 pl-14">
-                <div className="copyright flex flex-col items-end pt-6 pr-6 justify-between">
-                    <h3 className="font-montserrat font-bold lg:text-[20px] leading-[20px] text-[#D9D9D9]">
-                        copyright @Avaykt 2025{" "}
+            <div className="lg:min-h-[500px] min-h-[350px] lg:h-[900px] min-w-full bg-[#EF8713] flex flex-col justify-between pb-4 lg:pb-10 px-4 md:pl-14">
+                <div className="copyright flex flex-col items-end pt-3 md:pt-6 pr-0 md:pr-6">
+                    <h3 className="font-montserrat font-bold text-[14px] md:text-[16px] lg:text-[20px] leading-[16px] md:leading-[18px] lg:leading-[20px] text-[#D9D9D9]">
+                        copyright @Avaykt 2025
                     </h3>
-                    <h3 className="font-montserrat font-bold lg:text-[20px] leading-[20px] align-middle mt-1">
+                    <h3 className="font-montserrat font-bold text-[14px] md:text-[16px] lg:text-[20px] leading-[16px] md:leading-[18px] lg:leading-[20px] align-middle">
                         Made by ❤ of Our team
                     </h3>
                 </div>
 
-                <div className="lg:h-[600px] flex flex-col relative text-[70px]">
-                    <div
-                        className={`${bebasFont.className} lg:text-[200px] lg:leading-[170px] leading-[60px]`}>
+                <div className="lg:h-[600px] flex flex-col relative text-[36px] md:text-[60px] lg:text-[70px]">
+                    <div className={`${bebasFont.className} text-[60px] md:text-[120px] lg:text-[200px] leading-[50px] md:leading-[100px] lg:leading-[170px]`}>
                         <h1 className="text-white stroke-slate-800 stroke-[1px]">DAMN !</h1>
-                        <div className="flex gap-4">
+                        <div className="flex gap-2 md:gap-4">
                             <h1
-                                className="font-bold lg:text-[200px]"
+                                className="font-bold text-[60px] md:text-[120px] lg:text-[200px]"
                                 style={{
-                                    WebkitTextStroke: "4px #652703",
-                                    display: "inline-block", // Makes the element take up natural width
-                                    marginRight: "20px", // Apply right margin
+                                    WebkitTextStroke: "2px #652703",
+                                    WebkitTextStrokeWidth: "2px",
+                                    display: "inline-block",
+                                    marginRight: "10px",
                                 }}
                             >
                                 YOU
@@ -43,7 +56,8 @@ export default function Footer() {
                             <h1
                                 className=""
                                 style={{
-                                    WebkitTextStroke: "4px #652703",
+                                    WebkitTextStroke: "2px #652703",
+                                    WebkitTextStrokeWidth: "2px",
                                     color: "transparent",
                                     fontWeight: "bolder",
                                 }}
@@ -51,10 +65,10 @@ export default function Footer() {
                                 LOVE
                             </h1>
                         </div>
-                        <h1>SCROLLING</h1>
+                        <h1 className="text-[60px] md:text-[120px] lg:text-[200px]">SCROLLING</h1>
                     </div>
 
-                    <div className="absolute right-[10px] lg:top-[170px] lg:h-[300px] lg:w-[64px] flex flex-col lg:gap-2 text-xl lg:text-8xl">
+                    <div className="absolute right-0 md:top-[150px] lg:top-[170px] md:h-[250px] lg:h-[300px] flex flex-col gap-1 md:gap-2 text-3xl md:text-5xl lg:text-8xl">
                         <Link href="">
                             <IoLogoInstagram className="text-black" />
                         </Link>
@@ -70,9 +84,10 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="flex gap-4">
-                    <Image src="/images/giet-logo.svg" alt="giet" width={30} height={30} className="cover" />
-                    <Image src="/images/logo.png" alt="avyakt" width={30} height={20} className="cover" />
+                <div className="flex gap-2 md:gap-4 px-4 md:px-0">
+                    <Image src="/images/gietlogo.svg" alt="giet" width={100} height={100} className="w-[40px] h-[40px] md:w-[70px] md:h-[70px] lg:w-[100px] lg:h-[100px]" />
+                    <Image src="/images/avyakt-logo-b.png" alt="avyakt" width={100} height={100} className="w-[40px] h-[40px] md:w-[70px] md:h-[70px] lg:w-[100px] lg:h-[90px]" />
+                    <Image src="/images/tva.svg" alt="tva" width={100} height={100} className="w-[40px] h-[40px] md:w-[70px] md:h-[70px] lg:w-[100px] lg:h-[100px]" />
                 </div>
             </div >
         </>
