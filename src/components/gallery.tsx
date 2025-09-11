@@ -64,6 +64,7 @@ export default function Gallery(props: GalleryProps) {
         { image: "/images/events/7.jpg" },
         { image: "/images/events/8.jpg" },
         { image: "/images/events/9.jpg" },
+        { image: "/images/book-last.jpg" }
     ]
 
     const goNextPage = () => {
@@ -95,16 +96,16 @@ export default function Gallery(props: GalleryProps) {
                                 height={350}
                                 size="stretch"
                                 minWidth={170}
-                                maxWidth={800}
+                                maxWidth={700}
                                 minHeight={300}
-                                maxHeight={500}
+                                maxHeight={350}
                                 maxShadowOpacity={0.5}
                                 showCover={true}
                                 className="demo-book w-full h-auto"
                                 style={{ width: '100%', height: 'auto' }}
                                 startPage={0}
                                 drawShadow={true}
-                                flippingTime={1000}
+                                flippingTime={1500}
                                 usePortrait={false}
                                 startZIndex={0}
                                 autoSize={true}

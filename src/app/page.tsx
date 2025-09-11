@@ -16,6 +16,7 @@ import { useSession } from 'next-auth/react';
 import { Loader } from '@/components/loader';
 import Gallery from '@/components/gallery';
 import { TextAnimate } from '@/components/ui/text-animate';
+import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 // Font files can be colocated inside of `pages`
 const titleFont = localFont({ src: '../../public/fonts/ARB.ttf' })
 const usangelFont = localFont({ src: '../../public/fonts/usangel.ttf' })
@@ -83,10 +84,11 @@ export default function Home() {
                 style={{ gridTemplateColumns: '3fr 1fr', paddingLeft: "20px", paddingRight: "20px", textAlign: 'justify' }}>
 
                 <h1 className={`${ibmFont.className} text-shadow-lg lg:max-w-[90%] lg:text-[28px] lg:leading-[50.32px] lg:h-[847px] text-justify`}>
-                    <TextAnimate animation="blurInDown" by="word" duration={.1} once={true}>
-                        Welcome to CSE FEST '25, the annual celebration of innovation, technology, and collaboration hosted by the Department of Computer Science and Engineering.
-                        This year's fest is set to be bigger and better, bringing together students, tech enthusiasts, and industry leaders to explore groundbreaking ideas and showcase talent.
-                    </TextAnimate>
+                    <TextGenerateEffect words="Welcome to CSE FEST '25, the annual celebration of innovation, technology, and collaboration hosted by the Department of Computer Science and Engineering.
+                        This year's fest is set to be bigger and better, bringing together students, tech enthusiasts, and industry leaders to explore groundbreaking ideas and showcase talent."
+                        className={`${ibmFont.className} text-white`}
+                        duration={.4}
+                    />
                 </h1>
                 <div>
                     <Image src="/images/giet.svg" width={400} height={100} alt="border" className="" />
