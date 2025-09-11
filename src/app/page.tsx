@@ -161,11 +161,10 @@ export default function Home() {
                 <h1 className={`${jerseyFont.className} lg:text-[205px] text-[50px] text-[#FA861B] text-center`}>
                     OUR CLUBS
                 </h1>
-                <h1 className={`${ibmFont.className} lg:text-[40px] lg:mx-24 text-start pt-2 uppercase`}>
+                <h1 className={`${ibmFont.className} lg:text-[40px] lg:mx-24 uppercase text-center`}>
                     here are the clubs which collaborate with avyakt to make it more awesome
                 </h1>
                 <Clubs />
-<<<<<<< Updated upstream
             </motion.div>
 
             {/* Gallery */}
@@ -177,15 +176,6 @@ export default function Home() {
             >
                 <Gallery />
             </motion.div>
-
-            {/* Footer */}
-=======
-                <h1 className={`${ibmFont.className} lg:text-[40px] lg:mx-24 uppercase text-center`}>here are the clubs which collaborate with avyakt to make it more awesome</h1>
-            </div>
-            {/* avyakt gallery */}
-            <Gallery />
-            {/* footer */}
->>>>>>> Stashed changes
             <Footer />
         </div>
     );
