@@ -24,7 +24,7 @@ export default function Multiverse() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
-                className={`${ibmFont.className} lg:text-[48px] text-white text-center py-6`}
+                className={`${ibmFont.className} lg:text-[48px] text-white text-center lg:py-6`}
             >
                 THE AVYAKT MULTIVERSE
             </motion.h1>
