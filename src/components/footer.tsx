@@ -30,11 +30,11 @@ export default function Footer() {
             </div>
             <div className="lg:min-h-[500px] min-h-[350px] lg:h-[900px] min-w-full bg-[#EF8713] flex flex-col justify-between pb-4 lg:pb-10 px-4 md:pl-14">
                 <div className="copyright flex flex-col items-end pt-3 md:pt-6 pr-0 md:pr-6">
-                    <h3 className="font-montserrat font-bold text-[14px] md:text-[16px] lg:text-[20px] leading-[16px] md:leading-[18px] lg:leading-[20px] text-[#D9D9D9]">
-                        copyright @Avaykt 2025
+                    <h3 className="font-montserrat font-bold text-[14px] md:text-[16px] lg:text-[20px] leading-[16px] md:leading-[18px] lg:leading-[20px] text-black">
+                        copyright @Avaykt {new Date().getFullYear()}
                     </h3>
-                    <h3 className="font-montserrat font-bold text-[14px] md:text-[16px] lg:text-[20px] leading-[16px] md:leading-[18px] lg:leading-[20px] align-middle">
-                        Made by ❤ of Our team
+                    <h3 className="font-montserrat font-bold text-[14px] md:text-[16px] lg:text-[20px] leading-[16px] md:leading-[18px] lg:leading-[20px] align-middle text-black">
+                        Made by ❤  of Team Avyakt
                     </h3>
                 </div>
 
@@ -69,16 +69,16 @@ export default function Footer() {
                     </div>
 
                     <div className="absolute right-0 md:top-[150px] lg:top-[170px] md:h-[250px] lg:h-[300px] flex flex-col gap-1 md:gap-2 text-3xl md:text-5xl lg:text-8xl">
-                        <Link href="">
+                        <Link href="https://www.instagram.com/avyakt4.0/" target="_blank">
                             <IoLogoInstagram className="text-black" />
                         </Link>
-                        <Link href="">
+                        <Link href="https://www.linkedin.com/school/gietuniversitygunupur/" target="_blank">
                             <FaLinkedinIn className="text-black" />
                         </Link>
-                        <Link href="">
+                        <Link href="https://www.facebook.com/gietuniversitygunupur/" target="_blank">
                             <FaFacebookF className="text-black" />
                         </Link>
-                        <Link href="">
+                        <Link href="https://www.youtube.com/@AVYAKTGIETU" target="_blank">
                             <FaYoutube className="text-black" />
                         </Link>
                     </div>
@@ -86,7 +86,7 @@ export default function Footer() {
 
                 <div className="flex gap-2 md:gap-4 px-4 md:px-0">
                     <Image src="/images/gietlogo.svg" alt="giet" width={100} height={100} className="w-[40px] h-[40px] md:w-[70px] md:h-[70px] lg:w-[100px] lg:h-[100px]" />
-                    <Image src="/images/avyakt-logo-b.png" alt="avyakt" width={100} height={100} className="w-[40px] h-[40px] md:w-[70px] md:h-[70px] lg:w-[100px] lg:h-[90px]" />
+                    <Image src="/images/avyakt-logo-b.png" alt="avyakt" width={100} height={100} className="w-[40px] h-[40px] md:w-[70px] md:h-[70px] lg:w-[100px] lg:h-[70px] lg:mt-4" />
                     <Image src="/images/tva.svg" alt="tva" width={100} height={100} className="w-[40px] h-[40px] md:w-[70px] md:h-[70px] lg:w-[100px] lg:h-[100px]" />
                 </div>
             </div >
