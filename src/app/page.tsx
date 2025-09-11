@@ -87,7 +87,7 @@ export default function Home() {
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1 }}
                 viewport={{ once: true }}
-                className="lg:w-full w-full flex justify-start w-48"
+                className="lg:w-full  flex justify-start w-48"
             >
                 <Image src="/images/border.svg" width={400} height={20} alt="border" />
             </motion.div>
@@ -118,13 +118,15 @@ export default function Home() {
                 viewport={{ once: true }}
                 className='flex justify-center items-center p-2'
             >
-                <div className='lg:w-[1107px] lg:h-[635px] w-full h-[200px] border-[#F8861E] border-8 lg:rounded-[83px] rounded-[30px]'>
+                <div className='lg:w-[1107px] lg:h-[635px] w-full h-[200px] border-[#F8861E] border-8 lg:rounded-[83px] rounded-[40px]'>
                     <iframe
                         width="100%"
                         height="100%"
-                        src="https://www.youtube.com/embed/imFfVMy8Fxk?autoplay=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3&fs=0&disablekb=1&showinfo=0"
+                        src="https://www.youtube.com/embed/imFfVMy8Fxk?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3&fs=0&disablekb=1&showinfo=0"
                         title="YouTube video player"
-                        className="w-full h-full lg:rounded-[80px] rounded-[30px] p-1 overflow-hidden"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        className="lg:w-full h-full lg:rounded-[80px] rounded-[40px]"
                     ></iframe>
                 </div>
             </motion.div>
@@ -141,7 +143,9 @@ export default function Home() {
                     <h1 className={`${ibmFont.className} lg:text-[48px] text-white pl-2`}>
                         Click on the event type
                     </h1>
-                    <Image src={"/images/click.svg"} width={15} height={15} alt="border" />
+                    <Image src={"/images/click.svg"} width={15} height={15} alt="border"
+                        className="w-4 h-4 lg:w-10 lg:h-10"
+                    />
                 </motion.div>
                 <Multiverse />
             </section>
