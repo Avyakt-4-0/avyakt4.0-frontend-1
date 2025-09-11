@@ -45,7 +45,7 @@ export default function Home() {
 
                 {/* Background image (lowest layer) */}
                 <Image
-                    src={"/images/loki.svg"}
+                    src={"https://res.cloudinary.com/dmqpa2073/image/upload/v1757570598/loki__tva_suit___solo_png_by_iwasboredsoididthis_dekhen0-pre_4_qbiiqg.svg"}
                     alt="loki"
                     width={100}
                     height={100}
@@ -80,10 +80,10 @@ export default function Home() {
                 />
             </div>
             {/* About event section */}
-            <div className='sm:grid sm:grid-cols-1 gap-4 lg:my8 my-4 lg:h-[1000px] p-4 lg:p-0'
+            <div className='sm:grid sm:grid-cols-1 gap-4 my-4 p-4 lg:p-0'
                 style={{ gridTemplateColumns: '3fr 1fr', paddingLeft: "20px", paddingRight: "20px", textAlign: 'justify' }}>
 
-                <h1 className={`${ibmFont.className} text-shadow-lg lg:max-w-[90%] lg:text-[28px] lg:leading-[50.32px] lg:h-[847px] text-justify`}>
+                <h1 className={`${ibmFont.className} text-shadow-lg lg:max-w-[90%] lg:text-[28px] lg:leading-[50.32px] text-justify`}>
                     <TextGenerateEffect words="Welcome to CSE FEST '25, the annual celebration of innovation, technology, and collaboration hosted by the Department of Computer Science and Engineering.
                         This year's fest is set to be bigger and better, bringing together students, tech enthusiasts, and industry leaders to explore groundbreaking ideas and showcase talent."
                         className={`${ibmFont.className} text-white`}
@@ -96,7 +96,7 @@ export default function Home() {
             </div>
 
             {/* you tube video part */}
-            <div className='flex justify-center items-center lg:mt-48 p-2'>
+            <div className='flex justify-center items-center p-2'>
                 <div className='lg:w-[1107px] lg:h-[635px] w-full h-[200px] border-[#F8861E] border-8 lg:rounded-[83px] rounded-[40px]'>
                     {/* here we are adding youtube video */}
                 </div>
@@ -113,8 +113,8 @@ export default function Home() {
             {/* college clubs */}
             <div className='p-2'>
                 <h1 className={`${jerseyFont.className} lg:text-[205px] text-[50px] text-[#FA861B] text-center`}>OUR CLUBS</h1>
-                <Clubs />
                 <h1 className={`${ibmFont.className} lg:text-[40px] lg:mx-24 text-start pt-2 uppercase`}>here are the clubs which collaborate with avyakt to make it more awesome</h1>
+                <Clubs />
             </div>
             {/* avyakt gallery */}
             <Gallery />

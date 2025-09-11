@@ -21,11 +21,11 @@ export default function Footer() {
                     className="z-10 absolute bottom-0 md:pt-[28rem] w-full md:max-w-full"
                 />
                 <Image
-                    src={"/images/loki-footer.svg"}
+                    src={"https://res.cloudinary.com/dmqpa2073/image/upload/v1757569064/loki_laufey_odinson__avengers_solo_png_by_iwasboredsoididthis_dejlb66-414w-2x_2_uvim2s.png"}
                     width={700}
                     height={800}
                     alt="footer"
-                    className="z-0 w-full max-w-[90%] md:max-w-full h-[300px] lg:h-[900px]"
+                    className="z-0 w-full max-w-[90%] md:max-w-full h-[250px] lg:h-[900px]"
                 />
             </div>
             <div className="lg:min-h-[500px] min-h-[350px] lg:h-[900px] min-w-full bg-[#EF8713] flex flex-col justify-between pb-4 lg:pb-10 px-4 md:pl-14">

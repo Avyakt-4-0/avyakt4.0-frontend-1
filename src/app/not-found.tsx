@@ -13,7 +13,7 @@ export default function NotFound() {
                     <h1>4</h1>
                     <div className="relative w-[40vw] h-[40vw] sm:w-[30vw] sm:h-[30vw] md:w-[25vw] md:h-[25vw] lg:w-[35vw] lg:h-[35vw] xl:w-[30vw] xl:h-[30vw]">
                         <Image
-                            src="/images/notfound.svg"
+                            src="https://res.cloudinary.com/dmqpa2073/image/upload/v1757569063/image_5_yroj3r.png"
                             alt="404 Icon"
                             width={500}
                             height={500}

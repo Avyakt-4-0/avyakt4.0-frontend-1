@@ -55,16 +55,20 @@ export default function Gallery(props: GalleryProps) {
     const flipBook = useRef<any>(null);
     const images = [
         { image: "/images/book-cover.svg" },
-        { image: "/images/events/1.jpg" },
-        { image: "/images/events/2.jpg" },
-        { image: "/images/events/3.jpg" },
-        { image: "/images/events/4.jpg" },
-        { image: "/images/events/5.jpg" },
-        { image: "/images/events/6.jpg" },
-        { image: "/images/events/7.jpg" },
-        { image: "/images/events/8.jpg" },
-        { image: "/images/events/9.jpg" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568452/Group_55_qvlaup.png" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568453/Group_57_vrg8ke.png" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568453/Group_58_bl6fo6.png" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568453/Group_58_bl6fo6.png" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568454/Group_56_ngrtln.png" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568455/Group_53_y7k3rx.png" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568465/Group_61_jimlp4.png" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568466/Group_64_urtfuh.png" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568467/Group_59_r7tiry.png" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568467/Group_62_np06qk.png" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568467/Group_63_uqgeqv.png" },
+        { image: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757568468/Group_60_mx4sbk.png" },
         { image: "/images/book-last.jpg" }
+
     ]
 
     const goNextPage = () => {
