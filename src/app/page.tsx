@@ -150,7 +150,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 className='flex justify-center items-center p-2'
             >
-                <div className='lg:w-[1107px] lg:h-[635px] w-full h-[200px] border-[#F8861E] border-8 lg:rounded-[83px] rounded-[40px]'>
+                <div className='lg:w-[1000px] lg:h-[570px] w-full h-[200px] border-[#F8861E] border-8 lg:rounded-[40px] rounded-[40px]'>
                     <iframe
                         width="100%"
                         height="100%"
@@ -158,7 +158,7 @@ export default function Home() {
                         title="YouTube video player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         referrerPolicy="strict-origin-when-cross-origin"
-                        className="lg:w-full h-full lg:rounded-[80px] rounded-[40px]"
+                        className="lg:w-full h-full lg:rounded-[35px] rounded-[40px]"
                     ></iframe>
                 </div>
             </motion.div>
