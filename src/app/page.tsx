@@ -165,6 +165,7 @@ export default function Home() {
                     here are the clubs which collaborate with avyakt to make it more awesome
                 </h1>
                 <Clubs />
+<<<<<<< Updated upstream
             </motion.div>
 
             {/* Gallery */}
@@ -178,6 +179,13 @@ export default function Home() {
             </motion.div>
 
             {/* Footer */}
+=======
+                <h1 className={`${ibmFont.className} lg:text-[40px] lg:mx-24 uppercase text-center`}>here are the clubs which collaborate with avyakt to make it more awesome</h1>
+            </div>
+            {/* avyakt gallery */}
+            <Gallery />
+            {/* footer */}
+>>>>>>> Stashed changes
             <Footer />
         </div>
     );
