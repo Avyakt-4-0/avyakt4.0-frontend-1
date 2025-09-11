@@ -25,7 +25,7 @@ export default function Footer() {
                     width={700}
                     height={800}
                     alt="footer"
-                    className="z-0 w-full max-w-[90%] md:max-w-full h-[250px] lg:h-[900px]"
+                    className="z-0 w-[80%] max-w-[80%] md:max-w-full h-[250px] lg:h-[800px]"
                 />
             </div>
             <div className="lg:min-h-[500px] min-h-[350px] lg:h-[900px] min-w-full bg-[#EF8713] flex flex-col justify-between pb-4 lg:pb-10 px-4 md:pl-14">

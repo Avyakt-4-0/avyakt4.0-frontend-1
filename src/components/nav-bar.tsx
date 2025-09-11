@@ -7,6 +7,7 @@ import localFont from 'next/font/local';
 import Link from 'next/link';
 import { getUserDetails } from '@/lib/auth/getUserDetailsServerAction'; // Assuming this fetches user details
 import { checkIsAuthenticated } from '@/lib/auth/checkIsAutheticatedServerAction';
+import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 const ibmFont = IBM_Plex_Mono({
     weight: '700',
@@ -19,7 +20,6 @@ export default function NavBar() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userDetails, setUserDetails] = useState<{ name: string | null; email: string | null; image: string | null }>();
     const [showProfileModal, setShowProfileModal] = useState(false);
-    const [isLoaded, setIsLoaded] = useState(false);
     const router = useRouter()
     // Fetch authentication status and user details
     useEffect(() => {
@@ -34,13 +34,6 @@ export default function NavBar() {
         };
 
         fetchAuthStatusAndDetails();
-
-        // Trigger entry animation after component mounts
-        const timer = setTimeout(() => {
-            setIsLoaded(true);
-        }, 100);
-
-        return () => clearTimeout(timer);
     }, []);
 
     const navItems = [
@@ -60,10 +53,7 @@ export default function NavBar() {
     };
 
     return (
-        <nav className={`flex justify-between items-center lg:p-8 p-4 min-w-full transition-all duration-700 ease-out ${isLoaded
-            ? 'translate-y-0 opacity-100'
-            : '-translate-y-8 opacity-0'
-            }`}>
+        <nav className="flex justify-between items-center lg:p-8 p-4 min-w-full">
             {/* Logo Section */}
             <div className="p-2">
                 <Image src="/images/logo.png" alt="logo" width={60} height={60} />
@@ -75,13 +65,7 @@ export default function NavBar() {
                     {navItems.map((item, index) => (
                         <li
                             key={index}
-                            className={`text-[#F8861E] font-semibold text-2xl border-[#F8861E] border-2 p-1 bg-[#F5610D4D] w-[236px] hover:bg-[#F8861E] hover:text-white transition-all duration-500 ease-out ${isLoaded
-                                ? 'translate-y-0 opacity-100'
-                                : 'translate-y-4 opacity-0'
-                                }`}
-                            style={{
-                                transitionDelay: `${200 + (index * 100)}ms`
-                            }}
+                            className="text-[#F8861E] font-semibold text-2xl border-[#F8861E] border-2 p-1 bg-[#F5610D4D] w-[236px] hover:bg-[#F8861E] hover:text-white transition-all duration-300"
                         >
                             <Link href={item.link} className={`${ibmFont.className} text-center block`}>
                                 {item.name}
@@ -93,13 +77,7 @@ export default function NavBar() {
                 {/* Profile Section */}
                 {isAuthenticated && userDetails && (
                     <div
-                        className={`flex items-center gap-4 ml-4 cursor-pointer relative transition-all duration-500 ease-out ${isLoaded
-                            ? 'translate-y-0 opacity-100'
-                            : 'translate-y-4 opacity-0'
-                            }`}
-                        style={{
-                            transitionDelay: `${600}ms`
-                        }}
+                        className="flex items-center gap-4 ml-4 cursor-pointer relative"
                         onClick={() => setShowProfileModal(!showProfileModal)}
                     >
                         <Image
@@ -110,10 +88,7 @@ export default function NavBar() {
                             className="rounded-full border-2 border-[#F8861E]"
                         />
                         {showProfileModal && (
-                            <div className={`absolute top-full mt-2 right-0 backdrop-blur-sm p-4 rounded-lg shadow-lg w-64 z-50 transition-all duration-300 ease-out ${showProfileModal
-                                ? 'translate-y-0 opacity-100'
-                                : 'translate-y-2 opacity-0'
-                                }`}>
+                            <div className="absolute top-full mt-2 right-0 backdrop-blur-sm p-4 rounded-lg shadow-lg w-64 z-50">
                                 <div className="flex flex-col items-center">
                                     <Image
                                         src={userDetails.image || '/images/default-profile.png'}
@@ -140,13 +115,7 @@ export default function NavBar() {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className={`lg:hidden transition-all duration-500 ease-out ${isLoaded
-                ? 'translate-y-0 opacity-100'
-                : 'translate-y-4 opacity-0'
-                }`}
-                style={{
-                    transitionDelay: `${200}ms`
-                }}>
+            <div className="lg:hidden">
                 {!isMenuOpen ? (
                     <button onClick={() => setIsMenuOpen(true)} aria-label="Open Menu">
                         <Image src="/images/menu.svg" alt="menu" width={40} height={40} />
@@ -164,21 +133,12 @@ export default function NavBar() {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className={`absolute rounded-lg p-4 lg:hidden backdrop-blur-sm w-full shadow-lg top-20 right-0 z-50 flex flex-col transition-all duration-300 ease-out ${isMenuOpen
-                    ? 'translate-x-0 opacity-100'
-                    : 'translate-x-full opacity-0'
-                    }`}>
+                <div className="absolute rounded-lg p-4 lg:hidden backdrop-blur-sm w-full shadow-lg top-20 right-0 z-50 flex flex-col">
                     <ul className="flex flex-col gap-4">
                         {navItems.map((item, index) => (
                             <li
                                 key={index}
-                                className={`text-[#F8861E] font-semibold text-2xl border-[#F8861E] border-2 p-1 bg-[#F5610D4D] hover:bg-[#F8861E] hover:text-white transition-all duration-300 w-32 ${isMenuOpen
-                                    ? 'translate-x-0 opacity-100'
-                                    : 'translate-x-4 opacity-0'
-                                    }`}
-                                style={{
-                                    transitionDelay: `${100 + (index * 50)}ms`
-                                }}
+                                className="text-[#F8861E] font-semibold text-2xl border-[#F8861E] border-2 p-1 bg-[#F5610D4D] hover:bg-[#F8861E] hover:text-white transition-all duration-300 w-32"
                             >
                                 <Link
                                     href={item.link}
@@ -193,13 +153,7 @@ export default function NavBar() {
                         {/* Profile Section */}
                         {isAuthenticated && (
                             <li
-                                className={`flex items-center gap-4 cursor-pointer transition-all duration-300 ease-out ${isMenuOpen
-                                    ? 'translate-x-0 opacity-100'
-                                    : 'translate-x-4 opacity-0'
-                                    }`}
-                                style={{
-                                    transitionDelay: `${300}ms`
-                                }}
+                                className="flex items-center gap-4 cursor-pointer"
                                 onClick={() => setShowProfileModal(!showProfileModal)}
                             >
                                 <Image
@@ -215,10 +169,7 @@ export default function NavBar() {
 
                         {/* Profile Modal in Mobile */}
                         {showProfileModal && isAuthenticated && (
-                            <div className={`backdrop-blur-lg p-4 rounded-lg shadow-lg mt-4 transition-all duration-300 ease-out ${showProfileModal
-                                ? 'translate-y-0 opacity-100'
-                                : 'translate-y-2 opacity-0'
-                                }`}>
+                            <div className="backdrop-blur-lg p-4 rounded-lg shadow-lg mt-4">
                                 <div className="flex flex-col items-center">
                                     <Image
                                         src={userDetails?.image || '/images/default-profile.png'}

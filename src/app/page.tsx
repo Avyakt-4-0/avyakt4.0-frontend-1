@@ -80,7 +80,7 @@ export default function Home() {
                 />
             </div>
             {/* About event section */}
-            <div className='sm:grid sm:grid-cols-1 gap-4 my-4 p-4 lg:p-0'
+            <div className='my-4 lg:p-0'
                 style={{ gridTemplateColumns: '3fr 1fr', paddingLeft: "20px", paddingRight: "20px", textAlign: 'justify' }}>
 
                 <h1 className={`${ibmFont.className} text-shadow-lg lg:max-w-[90%] lg:text-[28px] lg:leading-[50.32px] text-justify`}>
@@ -88,17 +88,21 @@ export default function Home() {
                         This year's fest is set to be bigger and better, bringing together students, tech enthusiasts, and industry leaders to explore groundbreaking ideas and showcase talent."
                         className={`${ibmFont.className} text-white`}
                         duration={.4}
+
                     />
                 </h1>
-                <div>
+                {/* <div>
                     <Image src="/images/giet.svg" width={400} height={100} alt="border" className="" />
-                </div>
+                </div> */}
             </div>
 
             {/* you tube video part */}
             <div className='flex justify-center items-center p-2'>
                 <div className='lg:w-[1107px] lg:h-[635px] w-full h-[200px] border-[#F8861E] border-8 lg:rounded-[83px] rounded-[40px]'>
-                    {/* here we are adding youtube video */}
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/EXUzSLAbk4Y?si=RYc-AWRah4tTb8Dc" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                        className='w-full h-full rounded-[80px] p-2'
+                    ></iframe>
                 </div>
             </div>
             {/* avyakt multiverse */}
