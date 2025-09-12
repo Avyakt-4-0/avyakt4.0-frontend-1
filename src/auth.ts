@@ -5,8 +5,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Google],
   callbacks: {
     async signIn({ user }) {
-      const emailRegex =
-        /^[0-9]{2}[a-z]{3}[0-9]{3}\.[a-z]+@[a-z]+\.[a-z]{2,}$/i;
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@giet\.edu$/i;
       if (user.email && emailRegex.test(user.email)) {
         return true;
       } else {

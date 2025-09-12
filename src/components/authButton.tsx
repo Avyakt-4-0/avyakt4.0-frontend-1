@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 import { IBM_Plex_Sans } from 'next/font/google'
-import { signIn } from '@/auth'
 import { handleSignIn } from '@/lib/auth/signinServerAvction'
 const ibmFont = IBM_Plex_Sans({
     weight: '600',

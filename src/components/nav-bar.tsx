@@ -8,7 +8,7 @@ import Link from 'next/link';
 import { getUserDetails } from '@/lib/auth/getUserDetailsServerAction';
 import { checkIsAuthenticated } from '@/lib/auth/checkIsAutheticatedServerAction';
 import { useRouter } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion'; // ✅ added framer-motion
+import { motion, AnimatePresence } from 'framer-motion';
 
 const ibmFont = IBM_Plex_Mono({
     weight: '700',

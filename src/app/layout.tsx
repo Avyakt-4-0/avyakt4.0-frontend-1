@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ObserverProvider from "@/components/ObserverProvider";
 import { SessionProvider } from "next-auth/react";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "Avyakt 4.0",
@@ -43,6 +44,7 @@ export default function RootLayout({
         <ObserverProvider>
           <SessionProvider>
             {children}
+            <Toaster />
           </SessionProvider>
         </ObserverProvider>
       </body>

@@ -11,7 +11,6 @@ export default function LogoutConfirmationPage() {
 
     const handleLogout = async () => {
         try {
-            console.log("test")
             router.back()
             await handleSignOut();
         } catch (error) {
@@ -21,7 +20,7 @@ export default function LogoutConfirmationPage() {
 
     return (
         <div className="flex flex-col items-center justify-center h-screen text-center p-4">
-            <p className={`${usangelFont.className} text-4xl mb-8 text-gray-800`}>
+            <p className={`${usangelFont.className} text-4xl mb-8 text-white`}>
                 Are you sure you want to log out?
             </p>
             <button

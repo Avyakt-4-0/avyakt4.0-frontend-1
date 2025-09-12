@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@nauverse/tailwind-dot-grid-backgrounds": "^1.2.13",
+    "@radix-ui/react-toast": "^1.2.15",
     "@react-icons/all-files": "^4.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
