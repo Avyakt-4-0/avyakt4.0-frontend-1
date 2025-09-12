@@ -5,7 +5,7 @@ import ObserverProvider from "@/components/ObserverProvider";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
-  title: "Avyakt 4.0 - Department Tech Fest",
+  title: "Avyakt 4.0",
   description: "A technical fest for the CSE department at GIET University, Gunupur. The annual celebration of innovation, technology, and collaboration hosted by the Department of Computer Science and Engineering.",
   keywords: ["techfest", "Avyakt", "GIET", "events", "projects", "LokiThemefest", "Departmentfest", "GIETUniversity", "Gunupur"],
   openGraph: {
