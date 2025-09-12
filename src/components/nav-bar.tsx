@@ -58,6 +58,7 @@ export default function NavBar() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="flex justify-between items-center lg:p-8 p-4 min-w-full"
+            viewport={{ once: true }}
         >
             {/* Logo Section */}
             <motion.div whileHover={{ scale: 1.1 }} className="p-2">

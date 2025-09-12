@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react';
 import Gallery from '@/components/gallery';
 import { TextGenerateEffect } from '@/components/ui/text-generate-effect';
 import { checkIsAuthenticated } from '@/lib/auth/checkIsAutheticatedServerAction';
+import Posters from '@/components/posters';
 
 // Fonts
 const usangelFont = localFont({ src: '../../public/fonts/usangel.ttf' })
@@ -29,11 +30,12 @@ const ibmFont = IBM_Plex_Mono({
 export default function Home() {
     const [userName, setUsername] = useState<string>("");
     const [authStatus, setAuthStatus] = useState<boolean>(false);
-
+    const [authLoading, setAuthLoading] = useState<boolean>(true);
     useEffect(() => {
         const fetchAuthStatusAndDetails = async () => {
             const authStatus = await checkIsAuthenticated();
             setAuthStatus(authStatus);
+            setAuthLoading(false);
         };
         fetchAuthStatusAndDetails();
     }, []);
@@ -81,7 +83,7 @@ export default function Home() {
                         </motion.h2>
                     </motion.div>
 
-                    {!authStatus && <AuthButton />}
+                    {!authStatus && !authLoading && <AuthButton />}
                 </div>
             </motion.div>
 
@@ -180,6 +182,17 @@ export default function Home() {
                 viewport={{ once: true }}
             >
                 <Gallery />
+            </motion.div>
+
+            {/* Posters */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+                className='w-full mt-24 flex justify-center'
+            >
+                <Posters />
             </motion.div>
             <Footer />
         </div>
