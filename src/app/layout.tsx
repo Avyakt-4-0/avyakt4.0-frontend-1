@@ -5,9 +5,39 @@ import ObserverProvider from "@/components/ObserverProvider";
 import { SessionProvider } from "next-auth/react";
 
 export const metadata: Metadata = {
-  title: "Avyakt 4.0",
-  description: "A technical fest for CSE department,GIET University, Gunupur",
+  title: "Avyakt 4.0 - Department Tech Fest",
+  description: "A technical fest for the CSE department at GIET University, Gunupur. The annual celebration of innovation, technology, and collaboration hosted by the Department of Computer Science and Engineering.",
+  keywords: ["techfest", "Avyakt", "GIET", "events", "projects", "LokiThemefest", "Departmentfest", "GIETUniversity", "Gunupur"],
+  openGraph: {
+    title: "Avyakt 4.0",
+    description: "Official Department Tech Fest website at GIET University, Gunupur.",
+    url: "https://avyakt.tech",
+    siteName: "Avyakt 4.0",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Avyakt 4.0 Tech Fest Banner",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Avyakt 4.0",
+    description: "Department Tech Fest official site.",
+    images: ["/twitter-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://avyakt.tech/",
+  },
 };
+
 
 export default function RootLayout({
   children,
