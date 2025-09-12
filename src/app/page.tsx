@@ -189,6 +189,7 @@ export default function Home() {
                 transition={{ duration: 1 }}
                 viewport={{ once: true }}
                 className='w-full'
+                id='clubs'
             >
                 <h1 className={`${jerseyFont.className} lg:text-[205px] text-[50px] text-[#FA861B] text-center`}>
                     OUR CLUBS
