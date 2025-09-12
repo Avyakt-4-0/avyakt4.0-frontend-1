@@ -39,6 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+    <meta name="google-site-verification" content="xcmuajH0KJmJxZATajJIfRMLYUESGK80iiiNDvNhGcw" />
       <body className="bg-grid-10-s-2-[#321b06] ">
         <ObserverProvider>
           <SessionProvider>
