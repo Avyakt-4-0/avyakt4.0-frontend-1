@@ -190,7 +190,7 @@ export default function Home() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 1 }}
                 viewport={{ once: true }}
-                className='w-full mt-24 flex justify-center'
+                className='mt-24 flex justify-center'
             >
                 <Posters />
             </motion.div>

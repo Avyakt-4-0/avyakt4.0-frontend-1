@@ -16,7 +16,16 @@ const Posters = () => {
             alt: "Description 3"
         },
         {
-            src: "/images/posters/1.png",
+            src: "/images/posters/4.png",
+            alt: "Description 3"
+        },
+        {
+            src: "/images/posters/5.jpg",
+            alt: "Description 3"
+        },
+
+        {
+            src: "/images/posters/6.jpg",
             alt: "Description 1",
         },
         {
@@ -31,13 +40,15 @@ const Posters = () => {
     ];
 
     return (
-        <Carousel_002
-            images={images}
-            loop={true}
-            autoplay={true}
-            spaceBetween={10}
-            showNavigation={true}
-        />
+        <div className="flex h-full w-full items-center justify-center overflow-hidden">
+            <Carousel_002
+                images={images}
+                loop={true}
+                spaceBetween={40}
+                showNavigation={true}
+                autoplay={true}
+            />
+        </div>
     );
 };
 

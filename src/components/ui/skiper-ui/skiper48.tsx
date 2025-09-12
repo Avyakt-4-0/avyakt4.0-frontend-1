@@ -12,62 +12,6 @@ import "swiper/css";
 
 import { cn } from "@/lib/utils";
 
-const Skiper48 = () => {
-  const images = [
-    {
-      src: "/images/x.com/13.jpeg",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/x.com/32.jpeg",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/x.com/20.jpeg",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/x.com/21.jpeg",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/x.com/19.jpeg",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/x.com/1.jpeg",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/x.com/2.jpeg",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/x.com/3.jpeg",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/x.com/4.jpeg",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/x.com/5.jpeg",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/x.com/6.jpeg",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-  ];
-
-  return (
-    <div className="flex h-full w-full items-center justify-center overflow-hidden bg-[#f5f4f3]">
-      <Carousel_002 className="" images={images} loop />
-    </div>
-  );
-};
-
-export { Skiper48 };
 
 const Carousel_002 = ({
   images,
@@ -131,7 +75,7 @@ const Carousel_002 = ({
             }
             : false
         }
-        className="Carousal_002 h-[500px] w-[300px] lg:h-[700px] lg:w-[500px]"
+        className="Carousal_002 h-[500px] w-[300px] lg:w-[500px] lg:h-[800px]"
         modules={[EffectCards, Autoplay, Pagination, Navigation]}
       >
         {images.map((image, index) => (
@@ -159,20 +103,3 @@ const Carousel_002 = ({
 };
 
 export { Carousel_002 };
-
-/**
- * Skiper 48 Carousel_002 — React + Swiper
- * Built with Swiper.js - Read docs to learn more https://swiperjs.com/
- * Illustrations by AarzooAly - https://x.com/AarzooAly
- *
- * License & Usage:
- * - Free to use and modify in both personal and commercial projects.
- * - Attribution to Skiper UI is required when using the free version.
- * - No attribution required with Skiper UI Pro.
- *
- * Feedback and contributions are welcome.
- *
- * Author: @gurvinder-singh02
- * Website: https://gxuri.in
- * Twitter: https://x.com/Gur__vi
- */
