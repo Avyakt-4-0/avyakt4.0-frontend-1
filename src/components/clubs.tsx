@@ -19,7 +19,7 @@ export default function Clubs() {
     { name: 'TechHub Club', image: '/images/clubs/techhub.png' },
     ]
     return (
-        <div className='border-8 border-[#F8861E] lg:mx-24'>
+        <div className='border-8 border-[#F8861E] lg:mx-24' id='clubs'>
             <InfiniteMovingCards items={clubs}
                 direction="right"
                 speed="slow"
