@@ -9,9 +9,11 @@ export default function BlogPostPage({
 }) {
     const { name } = use(params)
     const isCompleted = false
+    if(!isCompleted) {
+        return <ComingSoon />;
+    }
+
     return (
-        <div>
-            {isCompleted ? <p>{name}</p> : <ComingSoon />}
-        </div>
+        <>{name}</>
     )
 }

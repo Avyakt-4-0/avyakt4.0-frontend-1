@@ -57,10 +57,10 @@ export default function Footer() {
                     </div>
                     <div>
                         <p className="font-extrabold text-neutral-100/90">EVENTS</p>
-                        <Link href={"/technical"} className="flex gap-2 items-center">Technical Events </Link>
-                        <Link href={"/non-technical"} className="flex gap-2 items-center">Non Technical Events </Link>
-                        <Link href={"/cultural"} className="flex gap-2 items-center">Cultural Events </Link>
-                        <Link href={"/sports"} className="flex gap-2 items-center">Sports Events</Link>
+                        <Link href={"events/technical"} className="flex gap-2 items-center">Technical Events </Link>
+                        <Link href={"events/non-technical"} className="flex gap-2 items-center">Non Technical Events </Link>
+                        <Link href={"events/cultural"} className="flex gap-2 items-center">Cultural Events </Link>
+                        <Link href={"events/sports"} className="flex gap-2 items-center">Sports Events</Link>
 
                     </div>
                 </div>
