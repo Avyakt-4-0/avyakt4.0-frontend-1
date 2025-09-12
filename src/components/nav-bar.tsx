@@ -39,7 +39,7 @@ export default function NavBar() {
 
     const navItems = [
         { name: 'Events', link: '/events' },
-        { name: 'Clubs', link: '/clubs' },
+        { name: 'Clubs', link: '#clubs' },
         { name: 'Dev Team', link: '/dev-team' },
         { name: 'About Us', link: '/about-us' },
     ];
