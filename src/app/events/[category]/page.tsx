@@ -12,13 +12,17 @@ import { AnimatePresence } from 'motion/react'
 const demoEvents: Event[] = [
     {
         id: "event_01K4W8QJAY5XHG573S09SSTFAP",
-        name: "code quiz",
+        name: "Dance Battle",
         category: "technical",
         registrationStatus: "ONGOING",
         genderCategory: "ALL",
-        registrationFee: 0,
-        teamSize: 1,
-        rules: [],
+        registrationFee: 200,
+        teamSize: 6,
+        rules: [
+            "Performance time: 5-8 minutes",
+            "Original choreography preferred",
+            "Appropriate costumes required"
+        ],
         thumbnail: "",
         startsOn: "2025-09-11 11:30:35.779",
         createdAt: "2025-09-11T11:31:49.340Z",
@@ -67,15 +71,54 @@ const demoEvents: Event[] = [
         updatedAt: "2025-09-11T11:31:49.340Z"
     },
     {
-        id: "event_01K4W8QJAY5XHG573S09SSTsaFAP",
+        id: "event_01K4W8QJAY5XHG573S09SssAP",
+        name: "BGMI",
+        category: "non-technical",
+        registrationStatus: "ONGOING",
+        genderCategory: "ALL",
+        registrationFee: 0,
+        teamSize: 4,
+        rules: [
+            "1 team of 4 players",
+            "each player should be in the game",
+            "bring your own device",
+            "bring your own charger"
+        ],
+        thumbnail: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757759304/3_qkszhy.png",
+        startsOn: "2025-09-11 11:30:35.779",
+        createdAt: "2025-09-11T11:31:49.340Z",
+        updatedAt: "2025-09-11T11:31:49.340Z"
+    },
+    {
+        id: "event_01K4W8QJAY5XG573S09SSTsaFAP",
         name: "football",
         category: "sports",
         registrationStatus: "ONGOING",
         genderCategory: "MALE",
         registrationFee: 0,
         teamSize: 11,
-        rules: [],
-        thumbnail: "",
+        rules: [
+            "11 players per team",
+            "each player should be in the game",
+        ],
+        thumbnail: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757759304/3_qkszhy.png",
+        startsOn: "2025-09-11 11:30:35.779",
+        createdAt: "2025-09-11T11:31:49.340Z",
+        updatedAt: "2025-09-11T11:31:49.340Z"
+    },
+    {
+        id: "event_01K4W8QJAY5XHG509SSTsaFAP",
+        name: "gully cricket",
+        category: "sports",
+        registrationStatus: "ONGOING",
+        genderCategory: "MALE",
+        registrationFee: 0,
+        teamSize: 12,
+        rules: [
+            "1 team of 12 players",
+            "each player should be in the game",
+        ],
+        thumbnail: "https://res.cloudinary.com/dmqpa2073/image/upload/v1757759299/1_swkjsl.png",
         startsOn: "2025-09-11 11:30:35.779",
         createdAt: "2025-09-11T11:31:49.340Z",
         updatedAt: "2025-09-11T11:31:49.340Z"
@@ -122,7 +165,7 @@ export default function EventsByCategory({
     return (
         <div className="flex flex-col gap-4 px-4">
             <div className="flex space-x-3 overflow-x-auto pb-2">
-                <div className=" border-2 border-[#FA861B] flex items-center justify-center bg-[#F4934359]">
+                <div className="border-2 border-[#FA861B] flex items-center justify-center bg-[#F4934359] w-24">
                     <Image
                         src={"/images/filter.svg"}
                         alt="filter"

@@ -1,10 +1,10 @@
 type Category = "technical" | "cultural" | "non-technical" | "sports";
 type GenderCategory = "MALE" | "FEMALE" | "ALL";
 type RegistrationStatus = "ONGOING" | "COMPLETED" | "CANCELLED";
-type Rule = {
-  id: string;
-  name: string;
-};
+// type Rule = {
+//   id: string;
+//   name: string;
+// };
 type Event = {
   id: string;
   name: string;
@@ -13,7 +13,7 @@ type Event = {
   genderCategory: GenderCategory;
   registrationFee: number;
   teamSize: number;
-  rules: Rule[];
+  rules: string[];
   thumbnail: string;
   startsOn: string;
   createdAt: string;
