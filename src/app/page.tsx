@@ -51,7 +51,7 @@ export default function Home() {
             >
                 <NavBar />
                 <Image
-                    src={"https://res.cloudinary.com/dmqpa2073/image/upload/v1757570598/loki__tva_suit___solo_png_by_iwasboredsoididthis_dekhen0-pre_4_qbiiqg.svg"}
+                    src={"images/loki.svg"}
                     alt="loki"
                     width={100}
                     height={100}
@@ -66,10 +66,10 @@ export default function Home() {
                         className="flex flex-col w-fit lg:leading-[100.38px] mt-32"
                     >
                         <div className="flex justify-center items-center gap-4 lg:gap-24 text-[46px] lg:text-[160px]">
-                            <motion.h1 whileHover={{ scale: 1.1 }} className={`${usangelFont.className}`}>
+                            <motion.h1 whileHover={{ scale: 1.05 }} className={`${usangelFont.className}`}>
                                 AVYAKT
                             </motion.h1>
-                            <motion.h1 whileHover={{ scale: 1.1 }} className={`${usangelFont.className}`}>
+                            <motion.h1 whileHover={{ scale: 1.05 }} className={`${usangelFont.className}`}>
                                 4.0
                             </motion.h1>
                         </div>
@@ -146,12 +146,9 @@ export default function Home() {
                     viewport={{ once: true }}
                     className="flex items-center gap-2"
                 >
-                    <h1 className={`${ibmFont.className} lg:text-[48px] text-white pl-2`}>
-                        Click on the event type
+                    <h1 className={`${ibmFont.className} px-3 lg:px-12 lg:text-[35px] text-white text-center pl-2`}>
+                        Explore the Multiverse of Events thoughout the Timelines with Avyakt 4.0
                     </h1>
-                    <Image src={"/images/click.svg"} width={15} height={15} alt="border"
-                        className="w-4 h-4 lg:w-10 lg:h-10"
-                    />
                 </motion.div>
                 <Multiverse />
             </section>
@@ -169,7 +166,7 @@ export default function Home() {
                     OUR CLUBS
                 </h1>
                 <h1 className={`${ibmFont.className} lg:text-[40px] lg:mx-24 uppercase text-center`}>
-                    here are the clubs which collaborate with avyakt to make it more awesome
+                    Here are the clubs which collaborate with avyakt to make it more Awesome
                 </h1>
                 <Clubs />
             </motion.div>
@@ -184,7 +181,7 @@ export default function Home() {
                 <Gallery />
             </motion.div>
 
-            {/* Posters */}
+            {/* Posters
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -193,7 +190,7 @@ export default function Home() {
                 className='mt-24 flex justify-center'
             >
                 <Posters />
-            </motion.div>
+            </motion.div> */}
             <Footer />
         </div>
     );

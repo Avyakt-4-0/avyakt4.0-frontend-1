@@ -63,7 +63,7 @@ export default function Multiverse() {
                     whileInView="visible"
                     viewport={{ once: true }}
                     transition={{ staggerChildren: 0.2 }}
-                    className={`${ibmFont.className} lg:text-[36px] text-[14px] text-white flex justify-end lg:pr-8 lg:py-48 lg:gap-24 pt-16 gap-4`}
+                    className={`${ibmFont.className} lg:text-[36px] text-[14px] lg:hover:brightness-125 text-neutral-100 flex justify-end lg:pr-8 lg:py-48 lg:gap-24 pt-16 gap-4`}
                 >
                     {[
                         { name: "TECHNICAL EVENTS", link: "/events/technical" },
