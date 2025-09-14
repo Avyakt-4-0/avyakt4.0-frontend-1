@@ -179,7 +179,10 @@ function Page({
                                 <Input
                                     label="Your Team Name"
                                     error={errors.teamName?.message}
-                                    {...register("teamName", { required: "Team name is required" })}
+                                    {...register("teamName", {
+                                        required: "Team name is required",
+
+                                    })}
                                 />
                             </div>
                         )}
@@ -272,6 +275,12 @@ function Page({
                                                 value: /^[a-zA-Z0-9._%+-]+@giet\.edu$/i,
                                                 message: "Please use your student email",
                                             },
+                                            validate: (value: string) => {
+                                                if (value === userDetails?.email) {
+                                                    return "Don't use Team Leader email use another email";
+                                                }
+                                                return true;
+                                            }
                                         })}
                                     />
                                 </div>
@@ -310,7 +319,7 @@ function Page({
                         </div>
                         <button
                             type="submit"
-                            className="mt-6 px-6 py-2 bg-[#F5610D54] text-white font-bold border-4 border-[#AF6338] hover:bg-[#AF6338] hover:text-[#F5610D54] hover:border-[#F5610D54]"
+                            className="mt-6 px-6 py-2 bg-[#F5610D54] text-white font-bold border-4 border-[#AF6338]"
                         >
                             {isPending ? "Submitting..." : "Submit"}
                         </button>
