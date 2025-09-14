@@ -7,6 +7,7 @@ import EventCard from '../components/Event'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { AnimatePresence } from 'motion/react'
+import { Skeleton } from '@/components/ui/skeleton'
 
 
 const demoEvents: Event[] = [
@@ -36,7 +37,7 @@ const demoEvents: Event[] = [
         genderCategory: "ALL",
         registrationFee: 0,
         teamSize: 1,
-        rules: [],
+        rules: ["https://docs.google.com/document/d/1SajaJ-_70KBJtWpLpaQp0ZS7qj3iiHaLrUgGIwe-0Ag/edit?tab=t.0"],
         thumbnail: "",
         startsOn: "2025-09-11 11:30:35.779",
         createdAt: "2025-09-11T11:31:49.340Z",
@@ -127,6 +128,13 @@ const demoEvents: Event[] = [
 ]
 type FilterType = "ALL" | "BOYS" | "GIRLS" | "SOLO" | "TEAM"
 
+const encodedCategory = {
+    "technical": "TECH",
+    "cultural": "CULTURAL",
+    "sports": "SPORTS",
+    "non-technical": "NONTECH"
+}
+
 export default function EventsByCategory({
     params,
 }: {
@@ -134,22 +142,21 @@ export default function EventsByCategory({
 }) {
     const { category } = use(params)
     const isCompleted = true
-    const [events, setEvents] = useState<Event[]>(demoEvents)
+    const [events, setEvents] = useState<Event[]>([])
     const [filter, setFilter] = useState<FilterType>("ALL")
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         const fetchEvents = async () => {
             console.log(category)
             const response = await axiosInstance.get(`/events`)
             const data = response.data
             console.log(data)
-            setEvents(data)
-        }
-        const setEventsByCategory = () => {
-            const filteredEvents = events.filter((event) => event.category === category)
+            const filteredEvents = data.filter((event: Event) => event.category === encodedCategory[category as keyof typeof encodedCategory])
+            console.log(filteredEvents)
             setEvents(filteredEvents)
+            setLoading(false)
         }
-        // fetchEvents()
-        setEventsByCategory()
+        fetchEvents()
     }, [])
     if (!isCompleted) {
         return <ComingSoon />;
@@ -199,21 +206,25 @@ export default function EventsByCategory({
                 }}
             >
                 <AnimatePresence>
-                    {filteredEvents.map((event) => (
-                        <motion.div
-                            key={event.id}
-                            variants={{
-                                hidden: { y: 40, opacity: 0 },
-                                show: { y: 0, opacity: 1 }
-                            }}
-                            initial="hidden"
-                            animate="show"
-                            exit={{ y: -40, opacity: 0 }}
-                            transition={{ duration: 0.6, ease: "easeOut" }}
-                        >
-                            <EventCard event={event} />
-                        </motion.div>
-                    ))}
+                    {loading ?
+                        <div className="flex flex-col gap-4">
+                            <Skeleton className="h-[400px] w-full rounded-lg" />
+                            <Skeleton className="h-[400px] w-full rounded-lg" />
+                        </div> : filteredEvents.length > 0 ? filteredEvents.map((event) => (
+                            <motion.div
+                                key={event.id}
+                                variants={{
+                                    hidden: { y: 40, opacity: 0 },
+                                    show: { y: 0, opacity: 1 }
+                                }}
+                                initial="hidden"
+                                animate="show"
+                                exit={{ y: -40, opacity: 0 }}
+                                transition={{ duration: 0.6, ease: "easeOut" }}
+                            >
+                                <EventCard event={event} />
+                            </motion.div>
+                        )) : <ComingSoon />}
                 </AnimatePresence>
             </motion.div>
         </div >

@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useTransition } from 'react';
 import localFont from 'next/font/local';
 import { handleSignOut } from '@/lib/auth/signOutServerAction';
 import { useRouter } from 'next/navigation'; // Ensure using the correct hook for navigation
@@ -8,11 +8,13 @@ const usangelFont = localFont({ src: '../../../public/fonts/usangel.ttf' });
 
 export default function LogoutConfirmationPage() {
     const router = useRouter();
-
+    const [isPending, startTransition] = useTransition();
     const handleLogout = async () => {
         try {
+            startTransition(async () => {
+                await handleSignOut();
+            })
             router.back()
-            await handleSignOut();
         } catch (error) {
             console.error('Error during logout:', error);
         }
@@ -25,6 +27,7 @@ export default function LogoutConfirmationPage() {
             </p>
             <button
                 onClick={handleLogout}
+                disabled={isPending}
                 className="bg-[#F8861E] text-white px-6 py-3 rounded-lg text-lg hover:bg-[#d76e00] transition-all duration-300"
             >
                 Yes, Log Out

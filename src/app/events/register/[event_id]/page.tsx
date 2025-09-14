@@ -167,13 +167,13 @@ function Page({
                         {teamSize > 1 &&
                             Array.from({ length: teamSize }, (_, i) => (
                                 <div key={i} className='flex gap-4 w-full'>
-                                    <Input
+                                    {/* <Input
                                         label={`Member ${i + 1} Name`}
                                         error={errors.members?.[i]?.memberName?.message}
                                         {...register(`members.${i}.memberName` as const, {
                                             required: `Member ${i + 1} name is required`,
                                         })}
-                                    />
+                                    /> */}
                                     <Input
                                         label={`Member ${i + 1} Email`}
                                         error={errors.members?.[i]?.memberEmail?.message}
@@ -195,6 +195,12 @@ function Page({
                                 {...register("transactionId", { required: "Transaction ID is required" })}
                             />
                         </>}
+                        {eventRegistrationFee == 0 && <button
+                            type="submit"
+                            className="mt-6 px-6 py-2 bg-[#F5610D54] text-white font-bold border-4 border-[#AF6338]"
+                        >
+                            Submit
+                        </button>}
                     </div>
 
                     {/* Payment Instructions */}
