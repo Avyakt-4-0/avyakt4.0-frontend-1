@@ -1,5 +1,5 @@
 'use client'
-import React, { use, useEffect, useState } from 'react'
+import React, { use, useEffect, useState, useTransition } from 'react'
 import { motion } from "framer-motion";
 import { IBM_Plex_Mono, Jersey_10 } from 'next/font/google'
 import { useSearchParams } from 'next/navigation';
@@ -9,6 +9,8 @@ import Select from '../../components/Select';
 import { checkIsAuthenticated } from '@/lib/auth/checkIsAutheticatedServerAction';
 import { getUserDetails } from '@/lib/auth/getUserDetailsServerAction';
 import Image from 'next/image';
+import { createEvent } from '@/lib/events/server-action';
+import { AnimatePresence } from 'motion/react';
 
 const jerseyFont = Jersey_10({
     weight: '400',
@@ -26,7 +28,7 @@ interface FormValues {
     phone: string;
     gender: string;
     teamSize: string;
-    members?: { memberName: string, memberEmail: string, memberPhone: string }[];
+    members?: { memberName?: string, memberEmail: string, memberPhone?: string }[];
     upiId: string;
     transactionId: string;
 }
@@ -42,6 +44,8 @@ function Page({
     const teamSize = Number(searchParams.get("teamSize") || "1")
     const eventRegistrationFee = Number(searchParams.get("registrationFee") || "0")
     const [userDetails, setUserDetails] = useState<{ name: string | null; email: string | null; image: string | null }>();
+    const [isPending, startTransition] = useTransition()
+    const [showSuccess, setShowSuccess] = useState(false)
     useEffect(() => {
         const fetchAuthStatusAndDetails = async () => {
             const authStatus = await checkIsAuthenticated();
@@ -66,14 +70,47 @@ function Page({
             transactionId: "",
             leaderEmail: userDetails?.email || "",
             leaderName: userDetails?.name || "",
-            members: Array.from({ length: teamSize }, (_, i) => ({
-                memberName: "",
+            members: Array.from({ length: teamSize - 1 }, (_, i) => ({
+                memberEmail: "",
             })),
         },
     })
 
     const onSubmit = (data: FormValues) => {
         console.log("✅ Form Submitted", data)
+        startTransition(async () => {
+            if (teamSize > 1) {
+                const members = data.members?.map((member) => ({
+                    email: member.memberEmail,
+                })) || [];
+                const response = await createEvent({
+                    eventId: event_id,
+                    leadEmail: data.leaderEmail,
+                    upiId: data.upiId,
+                    members: [{ email: data.leaderEmail, name: data.leaderName, phone: data.phone }, ...members]
+                });
+                console.log("✅ Response", response)
+                if (response) {
+                    setShowSuccess(true)
+                }
+
+            } else {
+                const response = await createEvent({
+                    eventId: event_id,
+                    leadEmail: data.leaderEmail,
+                    upiId: data.upiId,
+                    members: [{
+                        email: data.leaderEmail,
+                        name: data.leaderName,
+                        phone: data.phone
+                    }]
+                });
+                console.log("✅ Response", response)
+                if (response) {
+                    setShowSuccess(true)
+                }
+            }
+        })
     }
 
     return (
@@ -86,7 +123,40 @@ function Page({
             >
                 Enter the details for {eventName}
             </motion.h1>
-
+            {/* ✅ Success Popup */}
+            <AnimatePresence>
+                {showSuccess && (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        transition={{ duration: 0.4 }}
+                        className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+                    >
+                        <motion.div
+                            initial={{ y: 50 }}
+                            animate={{ y: 0 }}
+                            exit={{ y: 50 }}
+                            transition={{ duration: 0.4 }}
+                            className="bg-[#F4934359] rounded-2xl shadow-lg p-8 text-center max-w-md"
+                        >
+                            <h2 className="text-2xl font-bold text-white">
+                                🎉 Thank you!
+                            </h2>
+                            <p className="mt-2 text-white">
+                                Thank you for participating in <span className="font-semibold">{eventName}</span>.
+                                You will receive a confirmation email shortly.
+                            </p>
+                            <button
+                                onClick={() => setShowSuccess(false)}
+                                className="mt-4 px-4 py-2 bg-[#F49343] text-white rounded-lg"
+                            >
+                                Close
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex lg:flex-row flex-col gap-24'>
                     <div className='flex flex-col gap-4 lg:w-1/2 w-full'>
@@ -112,8 +182,15 @@ function Page({
                         <Input
                             label='Your Email / Team Leader Email'
                             error={errors.leaderEmail?.message}
-                            {...register("leaderEmail", { required: "Email is required" })}
+                            {...register("leaderEmail", {
+                                required: "Email is required",
+                                pattern: {
+                                    value: /^[a-zA-Z0-9._%+-]+@giet\.edu$/i,
+                                    message: "Please use your student email to login in.",
+                                }
+                            })}
                             value={userDetails?.email || ""}
+                            disabled={userDetails?.email === ""}
                         />
                         {/* Phone Number */}
                         <Input
@@ -165,7 +242,7 @@ function Page({
 
                         {/* Dynamic Player Names */}
                         {teamSize > 1 &&
-                            Array.from({ length: teamSize }, (_, i) => (
+                            Array.from({ length: teamSize - 1 }, (_, i) => (
                                 <div key={i} className='flex gap-4 w-full'>
                                     {/* <Input
                                         label={`Member ${i + 1} Name`}
@@ -179,6 +256,10 @@ function Page({
                                         error={errors.members?.[i]?.memberEmail?.message}
                                         {...register(`members.${i}.memberEmail` as const, {
                                             required: `Member ${i + 1} email is required`,
+                                            pattern: {
+                                                value: /^[a-zA-Z0-9._%+-]+@giet\.edu$/i,
+                                                message: "Please use your student email to login in.",
+                                            },
                                         })}
                                     />
                                 </div>
@@ -219,7 +300,7 @@ function Page({
                             type="submit"
                             className="mt-6 px-6 py-2 bg-[#F5610D54] text-white font-bold border-4 border-[#AF6338]"
                         >
-                            Submit
+                            {isPending ? "Submitting..." : "Submit"}
                         </button>
                     </div>}
                 </div>

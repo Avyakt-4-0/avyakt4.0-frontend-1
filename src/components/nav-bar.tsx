@@ -62,7 +62,9 @@ export default function NavBar() {
         >
             {/* Logo Section */}
             <motion.div whileHover={{ scale: 1.1 }} className="p-2">
-                <Image src="/images/logo.png" alt="logo" width={60} height={60} />
+                <Link href="/">
+                    <Image src="/images/logo.png" alt="logo" width={60} height={60} />
+                </Link>
             </motion.div>
 
             {/* Desktop Menu */}

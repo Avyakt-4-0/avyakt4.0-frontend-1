@@ -14,13 +14,13 @@ const ibmFont = IBM_Plex_Mono({
 function EventCard({ event }: { event: EventProps }) {
     const startsOn = dayjs(event.startsOn)
     return (
-        <div className='gap-4 border-4 bg-[#d1540ca4] border-[#F8861E] p-4'>
+        <div className='gap-4 border-4 bg-[#d1540ca4] border-[#F8861E] p-4 lg:h-[90vh]'>
             <Image
                 src={event.thumbnail.trim() || "/images/events-placeholder.svg"}
                 alt={event.name}
                 width={500}
                 height={500}
-                className='w-full rounded-md h-1/2 object-cover'
+                className='w-full rounded-md lg:h-[60vh] '
             />
             <p className={`${ibmFont.className} lg:text-4xl text-2xl font-bold text-white`}>{event.name}</p>
             <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Starts On: {startsOn.format("DD/MM/YYYY h:mm A")}</p>
@@ -52,7 +52,7 @@ function EventCard({ event }: { event: EventProps }) {
                                 <GoogleDocsViewer docUrlOrId={event.rules[0]} />
                             </div> */}
                             {/* <Button title='View Rules' link={`/rules?docsId=${event.rules[0]}`} /> */}
-                            <a
+                            {event.rules[0].includes("docs.google.com") && <a
                                 href={`https://docs.google.com/document/d/${event.rules[0].split("/d/")[1].split("/")[0]
                                     }/export?format=pdf`}
                                 target="_blank"
@@ -64,7 +64,7 @@ function EventCard({ event }: { event: EventProps }) {
                                 >
                                     Download Rules As PDF
                                 </div>
-                            </a>
+                            </a>}
 
 
                         </DialogContent>

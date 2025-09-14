@@ -20,4 +20,14 @@ type Event = {
   updatedAt: string;
 };
 
-export type { Event };
+type EventRegistration = {
+  eventId: string;
+  leadEmail: string;
+  upiId?: string;
+  members: Array<{
+    name?: string;
+    email: string;
+    phone?: string;
+  }>;
+};
+export type { Event, EventRegistration };

@@ -1,13 +1,14 @@
 'use client'
 import axiosInstance from '@/api/axiosInstance'
 import ComingSoon from '@/components/ComingSoon'
-import { use, useEffect, useState } from 'react'
+import { use, useEffect, useState, useTransition } from 'react'
 import { Event } from '@/types'
 import EventCard from '../components/Event'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { AnimatePresence } from 'motion/react'
 import { Skeleton } from '@/components/ui/skeleton'
+import { fetchEvents } from '@/lib/events/server-action'
 
 
 const demoEvents: Event[] = [
@@ -145,18 +146,18 @@ export default function EventsByCategory({
     const [events, setEvents] = useState<Event[]>([])
     const [filter, setFilter] = useState<FilterType>("ALL")
     const [loading, setLoading] = useState(true)
+    const [isPending, startTransition] = useTransition()
     useEffect(() => {
-        const fetchEvents = async () => {
-            console.log(category)
-            const response = await axiosInstance.get(`/events`)
-            const data = response.data
-            console.log(data)
-            const filteredEvents = data.filter((event: Event) => event.category === encodedCategory[category as keyof typeof encodedCategory])
-            console.log(filteredEvents)
-            setEvents(filteredEvents)
+        const fetchAllEvents = async () => {
+            startTransition(async () => {
+                const data = await fetchEvents()
+                const filteredEvents = data.filter((event: Event) => event.category === encodedCategory[category as keyof typeof encodedCategory])
+                console.log(filteredEvents)
+                setEvents(filteredEvents)
+            })
             setLoading(false)
         }
-        fetchEvents()
+        fetchAllEvents()
     }, [])
     if (!isCompleted) {
         return <ComingSoon />;
@@ -206,11 +207,11 @@ export default function EventsByCategory({
                 }}
             >
                 <AnimatePresence>
-                    {loading ?
+                    {isPending ?
                         <div className="flex flex-col gap-4">
                             <Skeleton className="h-[400px] w-full rounded-lg" />
                             <Skeleton className="h-[400px] w-full rounded-lg" />
-                        </div> : filteredEvents.length > 0 ? filteredEvents.map((event) => (
+                        </div> : filteredEvents.length > 0 && filteredEvents.map((event) => (
                             <motion.div
                                 key={event.id}
                                 variants={{
@@ -224,7 +225,7 @@ export default function EventsByCategory({
                             >
                                 <EventCard event={event} />
                             </motion.div>
-                        )) : <ComingSoon />}
+                        ))}
                 </AnimatePresence>
             </motion.div>
         </div >
