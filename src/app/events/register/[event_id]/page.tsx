@@ -11,6 +11,7 @@ import { getUserDetails } from '@/lib/auth/getUserDetailsServerAction';
 import Image from 'next/image';
 import { createEvent } from '@/lib/events/server-action';
 import { AnimatePresence } from 'motion/react';
+import { toast } from '@/hooks/use-toast';
 
 const jerseyFont = Jersey_10({
     weight: '400',
@@ -77,7 +78,6 @@ function Page({
     })
 
     const onSubmit = (data: FormValues) => {
-        console.log("✅ Form Submitted", data)
         startTransition(async () => {
             if (teamSize > 1) {
                 const members = data.members?.map((member) => ({
@@ -86,28 +86,40 @@ function Page({
                 const response = await createEvent({
                     eventId: event_id,
                     leadEmail: data.leaderEmail,
-                    upiId: data.upiId,
+                    upiId: data.transactionId,
                     members: [{ email: data.leaderEmail, name: data.leaderName, phone: data.phone }, ...members]
                 });
-                console.log("✅ Response", response)
-                if (response) {
+                if (response.status === 200) {
                     setShowSuccess(true)
                 }
 
+                if (response.status === 400) {
+                    toast({
+                        variant: "default",
+                        title: "You Already Registered",
+                        description: "You have already registered for this event.",
+                    })
+                }
             } else {
                 const response = await createEvent({
                     eventId: event_id,
                     leadEmail: data.leaderEmail,
-                    upiId: data.upiId,
+                    upiId: data.transactionId,
                     members: [{
                         email: data.leaderEmail,
                         name: data.leaderName,
                         phone: data.phone
                     }]
                 });
-                console.log("✅ Response", response)
-                if (response) {
+                if (response.status === 200) {
                     setShowSuccess(true)
+                }
+                if (response.status === 400) {
+                    toast({
+                        variant: "default",
+                        title: "You Already Registered",
+                        description: "You have already registered for this event.",
+                    })
                 }
             }
         })
@@ -176,18 +188,18 @@ function Page({
                         <Input
                             label="Your Name / Team Lead Name"
                             error={errors.leaderName?.message}
-                            {...register("leaderName", { required: "Leader name is required" })}
+                            {...register("leaderName")}
                             value={userDetails?.name || ""}
                         />
                         <Input
                             label='Your Email / Team Leader Email'
                             error={errors.leaderEmail?.message}
                             {...register("leaderEmail", {
-                                required: "Email is required",
-                                pattern: {
-                                    value: /^[a-zA-Z0-9._%+-]+@giet\.edu$/i,
-                                    message: "Please use your student email to login in.",
-                                }
+                                // required: "Email is required",
+                                // pattern: {
+                                //     value: /^[a-zA-Z0-9._%+-]+@giet\.edu$/i,
+                                //     message: "Please use your student email to login in.",
+                                // }
                             })}
                             value={userDetails?.email || ""}
                             disabled={userDetails?.email === ""}
@@ -258,7 +270,7 @@ function Page({
                                             required: `Member ${i + 1} email is required`,
                                             pattern: {
                                                 value: /^[a-zA-Z0-9._%+-]+@giet\.edu$/i,
-                                                message: "Please use your student email to login in.",
+                                                message: "Please use your student email",
                                             },
                                         })}
                                     />
@@ -280,7 +292,7 @@ function Page({
                             type="submit"
                             className="mt-6 px-6 py-2 bg-[#F5610D54] text-white font-bold border-4 border-[#AF6338]"
                         >
-                            Submit
+                            {isPending ? "Submitting..." : "Submit"}
                         </button>}
                     </div>
 
@@ -298,7 +310,7 @@ function Page({
                         </div>
                         <button
                             type="submit"
-                            className="mt-6 px-6 py-2 bg-[#F5610D54] text-white font-bold border-4 border-[#AF6338]"
+                            className="mt-6 px-6 py-2 bg-[#F5610D54] text-white font-bold border-4 border-[#AF6338] hover:bg-[#AF6338] hover:text-[#F5610D54] hover:border-[#F5610D54]"
                         >
                             {isPending ? "Submitting..." : "Submit"}
                         </button>

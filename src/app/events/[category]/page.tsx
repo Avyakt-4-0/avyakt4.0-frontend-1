@@ -9,6 +9,7 @@ import Image from 'next/image'
 import { AnimatePresence } from 'motion/react'
 import { Skeleton } from '@/components/ui/skeleton'
 import { fetchEvents } from '@/lib/events/server-action'
+import Link from 'next/link'
 
 
 const demoEvents: Event[] = [
@@ -154,8 +155,10 @@ export default function EventsByCategory({
                 const filteredEvents = data.filter((event: Event) => event.category === encodedCategory[category as keyof typeof encodedCategory])
                 console.log(filteredEvents)
                 setEvents(filteredEvents)
+                if (filteredEvents.length === 0) {
+                    setLoading(false)
+                }
             })
-            setLoading(false)
         }
         fetchAllEvents()
     }, [])
@@ -169,17 +172,24 @@ export default function EventsByCategory({
         if (filter === "TEAM") return event.teamSize > 1
         return true
     })
+    if (filteredEvents.length === 0 && !loading) {
+        return <ComingSoon />
+    }
+
 
     return (
         <div className="flex flex-col gap-4 px-4">
-            <div className="flex space-x-3 overflow-x-auto pb-2">
-                <div className="border-2 border-[#FA861B] flex items-center justify-center bg-[#F4934359] w-24">
-                    <Image
-                        src={"/images/filter.svg"}
-                        alt="filter"
-                        width={50}
-                        height={50}
-                    />
+            <div className="flex space-x-3  overflow-x-auto pb-2">
+                <div className="border-2 border-[#FA861B] flex flex-shrink-0 items-center justify-center bg-[#F4934359] lg:w-24 w-16">
+                    <Link href="/events">
+                        <Image
+                            src={"/images/filter.svg"}
+                            alt="filter"
+                            width={50}
+                            height={50}
+                            className="cursor-pointer w-6 h-6 lg:w-16 lg:h-8"
+                        />
+                    </Link>
                 </div>
 
                 {(["ALL", "BOYS", "GIRLS", "SOLO", "TEAM"] as FilterType[]).map((f) => (
@@ -195,7 +205,7 @@ export default function EventsByCategory({
                 ))}
             </div>
             <motion.div
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24"
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: false }}
