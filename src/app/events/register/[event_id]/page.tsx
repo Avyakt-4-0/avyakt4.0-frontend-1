@@ -69,8 +69,8 @@ function Page({
             teamSize: teamSize.toString(),
             upiId: "",
             transactionId: "",
-            leaderEmail: userDetails?.email || "",
-            leaderName: userDetails?.name || "",
+            leaderEmail: "",
+            leaderName: "",
             members: Array.from({ length: teamSize - 1 }, (_, i) => ({
                 memberEmail: "",
             })),
@@ -100,6 +100,13 @@ function Page({
                         description: "You have already registered for this event.",
                     })
                 }
+                else {
+                    toast({
+                        variant: "default",
+                        title: "Something went wrong",
+                        description: "Please try again. " + response.error,
+                    })
+                }
             } else {
                 const response = await createEvent({
                     eventId: event_id,
@@ -119,6 +126,13 @@ function Page({
                         variant: "default",
                         title: "You Already Registered",
                         description: "You have already registered for this event.",
+                    })
+                }
+                else {
+                    toast({
+                        variant: "default",
+                        title: "Something went wrong",
+                        description: "Please try again. " + response.error,
                     })
                 }
             }
@@ -191,21 +205,22 @@ function Page({
                         <Input
                             label="Your Name / Team Lead Name"
                             error={errors.leaderName?.message}
-                            {...register("leaderName")}
+                            {...register("leaderName", { required: "Leader name is required" })}
                             value={userDetails?.name || ""}
+                        // disabled={userDetails?.name === ""}
                         />
                         <Input
                             label='Your Email / Team Leader Email'
                             error={errors.leaderEmail?.message}
                             {...register("leaderEmail", {
-                                // required: "Email is required",
-                                // pattern: {
-                                //     value: /^[a-zA-Z0-9._%+-]+@giet\.edu$/i,
-                                //     message: "Please use your student email to login in.",
-                                // }
+                                required: "Email is required",
+                                pattern: {
+                                    value: /^[a-zA-Z0-9._%+-]+@giet\.edu$/i,
+                                    message: "Please use your student email to login in.",
+                                }
                             })}
                             value={userDetails?.email || ""}
-                            disabled={userDetails?.email === ""}
+                        // disabled={userDetails?.email === ""}
                         />
                         {/* Phone Number */}
                         <Input

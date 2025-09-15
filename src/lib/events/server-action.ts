@@ -27,6 +27,7 @@ export const createEvent = async (event: EventRegistration) => {
     return {
       status: error.status,
       error: error.message,
+      // ...error.response,
     };
   }
 };
