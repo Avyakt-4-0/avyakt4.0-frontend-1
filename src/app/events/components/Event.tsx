@@ -22,7 +22,7 @@ function EventCard({ event }: { event: EventProps }) {
                 height={500}
                 className='w-full rounded-md lg:h-[60vh] '
             />
-            <p className={`${ibmFont.className} lg:text-4xl text-2xl font-bold text-white`}>{event.name}</p>
+            <p className={`${ibmFont.className} lg:text-2xl text-xl font-bold text-white`}>{event.name}</p>
             <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Registration From: {startsOn.format("DD/MM/YYYY")}</p>
             {event.registrationStatus === "ONGOING" && event.registrationFee > 0 ? <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Registration Fee: {event.registrationFee}</p> : <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Free Registration</p>}
             {event.registrationStatus === "ONGOING" && event.teamSize > 1 ? <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Team Size: {event.teamSize}</p> : <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Solo Event</p>}
@@ -70,7 +70,7 @@ function EventCard({ event }: { event: EventProps }) {
                         </DialogContent>
                     </Dialog>
                 </div>
-                {event.registrationStatus === "ONGOING" ? <Button title="Register" link={`/events/register/${event.id}?name=${event.name}&teamSize=${event.teamSize}&registrationFee=${event.registrationFee}`} />
+                {event.registrationStatus === "ONGOING" ? <Button title="Register" link={`/events/register/${event.id}?name=${event.name}&teamSize=${event.teamSize}&registrationFee=${event.registrationFee}&category=${event.category}`} />
                     : <p className={`${ibmFont.className} lg:text-xl  font-bold text-black`}>Registration Closed 🚫</p>}
             </div>
         </div>

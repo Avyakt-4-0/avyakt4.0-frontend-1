@@ -33,6 +33,12 @@ interface FormValues {
     upiId: string;
     transactionId: string;
 }
+export const whatsappGroupLinks: Record<string, string> = {
+    SPORTS: "https://chat.whatsapp.com/IZ5XjH8HxMJDdpluiQ8gNK?mode=ac_t",
+    CULTURAL: "https://chat.whatsapp.com/LyONEKHhUzm8x8IjGQDibY?mode=ac_t",
+    NONTECH: "https://chat.whatsapp.com/LuzUGBymOPu43rzAWdqn5Q?mode=ac_t",
+    TECH: "https://chat.whatsapp.com/E6QXTG8OSpzIbw7SBCcFeL?mode=ac_t",
+};
 
 function Page({
     params,
@@ -44,25 +50,16 @@ function Page({
     const eventName = searchParams.get("name")
     const teamSize = Number(searchParams.get("teamSize") || "1")
     const eventRegistrationFee = Number(searchParams.get("registrationFee") || "0")
+    const eventCategory = searchParams.get("category")
     const [userDetails, setUserDetails] = useState<{ name: string | null; email: string | null; image: string | null }>();
     const [isPending, startTransition] = useTransition()
     const [showSuccess, setShowSuccess] = useState(false)
-    useEffect(() => {
-        const fetchAuthStatusAndDetails = async () => {
-            const authStatus = await checkIsAuthenticated();
-            if (authStatus) {
-                const details = await getUserDetails();
-                setUserDetails(details);
-            }
-        };
-
-        fetchAuthStatusAndDetails();
-    }, []);
     const {
         register,
         handleSubmit,
         control,
         formState: { errors },
+        reset
     } = useForm<FormValues>({
         defaultValues: {
             gender: "ALL",
@@ -76,8 +73,25 @@ function Page({
             })),
         },
     })
+    useEffect(() => {
+        const fetchAuthStatusAndDetails = async () => {
+            const authStatus = await checkIsAuthenticated();
+            if (authStatus) {
+                const details = await getUserDetails();
+                setUserDetails(details);
+                reset((prev) => ({
+                    ...prev,
+                    leaderName: details?.name || "",
+                    leaderEmail: details?.email || "",
+                }));
+            }
+        };
+        fetchAuthStatusAndDetails();
+    }, [reset]);
+
 
     const onSubmit = (data: FormValues) => {
+        console.log(data)
         startTransition(async () => {
             if (teamSize > 1) {
                 const members = data.members?.map((member) => ({
@@ -89,22 +103,15 @@ function Page({
                     upiId: data.transactionId,
                     members: [{ email: data.leaderEmail, name: data.leaderName, phone: data.phone }, ...members]
                 });
-                if (response.status === 200) {
+                console.log(response)
+                if (response?.success) {
                     setShowSuccess(true)
-                }
-
-                if (response.status === 400) {
-                    toast({
-                        variant: "default",
-                        title: "You Already Registered",
-                        description: "You have already registered for this event.",
-                    })
                 }
                 else {
                     toast({
                         variant: "default",
-                        title: "Something went wrong",
-                        description: "Please try again. " + response.error,
+                        title: response?.message,
+                        description: response?.message,
                     })
                 }
             } else {
@@ -118,21 +125,15 @@ function Page({
                         phone: data.phone
                     }]
                 });
-                if (response.status === 200) {
+                console.log(response)
+                if (response?.success || response?.registrationId) {
                     setShowSuccess(true)
-                }
-                if (response.status === 400) {
-                    toast({
-                        variant: "default",
-                        title: "You Already Registered",
-                        description: "You have already registered for this event.",
-                    })
                 }
                 else {
                     toast({
                         variant: "default",
-                        title: "Something went wrong",
-                        description: "Please try again. " + response.error,
+                        title: response?.message,
+                        description: response?.message,
                     })
                 }
             }
@@ -173,12 +174,19 @@ function Page({
                                 Thank you for participating in <span className="font-semibold">{eventName}</span>.
                                 You will receive a confirmation email shortly.
                             </p>
-                            <button
-                                onClick={() => setShowSuccess(false)}
-                                className="mt-4 px-4 py-2 bg-[#F49343] text-white rounded-lg"
-                            >
-                                Close
-                            </button>
+                            <div className="flex gap-4 justify-center ">
+                                <a href={whatsappGroupLinks[eventCategory || ""]} target="_blank" rel="noopener noreferrer"
+                                    className="mt-4 px-4 py-2 bg-[#f47209] text-white rounded-lg"
+                                >
+                                    Join WhatsApp Group
+                                </a>
+                                <button
+                                    onClick={() => setShowSuccess(false)}
+                                    className="mt-4 px-4 py-2 bg-[#f47209] text-white rounded-lg"
+                                >
+                                    Close
+                                </button>
+                            </div>
                         </motion.div>
                     </motion.div>
                 )}
@@ -195,7 +203,6 @@ function Page({
                                     error={errors.teamName?.message}
                                     {...register("teamName", {
                                         required: "Team name is required",
-
                                     })}
                                 />
                             </div>
@@ -206,8 +213,7 @@ function Page({
                             label="Your Name / Team Lead Name"
                             error={errors.leaderName?.message}
                             {...register("leaderName", { required: "Leader name is required" })}
-                        // defaultValue={userDetails?.name || ""}
-                        // disabled={userDetails?.name === ""}
+                            readOnly
                         />
                         <Input
                             label='Your Email / Team Leader Email'
@@ -219,6 +225,7 @@ function Page({
                                     message: "Please use your student email to login in.",
                                 }
                             })}
+                            readOnly
                         // defaultValue={userDetails?.email || ""}
                         // disabled={userDetails?.email === ""}
                         />
@@ -330,7 +337,7 @@ function Page({
                             <p className='text-start'>2.Put your UPI ID in the field.</p>
                             <p className='text-start'>3.Put your UTR/Transaction Id in the Field.</p>
                             <p className='text-start'>4.Upon success you will get an verification mail with necessary details.</p>
-                            <p className='text-start'>5.Join the Whatsapp Group for further Communication</p>
+                            <p className='text-start'>5.Join the Whatsapp Group for further Communication <a href={whatsappGroupLinks[eventCategory || ""]} target="_blank" rel="noopener noreferrer" className="text-[#F5610D54] font-bold">here</a></p>
                         </div>
                         <button
                             type="submit"
@@ -340,8 +347,6 @@ function Page({
                         </button>
                     </div>}
                 </div>
-
-
             </form>
         </div>
     )
