@@ -323,7 +323,7 @@ function Page({
                     {/* Payment Instructions */}
                     {eventRegistrationFee > 0 && <div className='flex flex-col gap-4 lg:w-1/2 w-full'>
                         <div className='flex justify-center items-center p-4 border-4 border-[#652703]'>
-                            <Image src="/images/qr-code.svg" alt="payment" width={500} height={500} />
+                            <Image src="/images/qr.jpg" alt="payment" width={500} height={500} />
                         </div>
                         <div className={`${ibmFont.className} text-[#F8861EA6]`}>
                             <p className='text-start'>1.Scan the QR Code to Pay the respective amount for the event.</p>

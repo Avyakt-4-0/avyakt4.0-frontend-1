@@ -2,7 +2,6 @@
 
 import axiosInstance from "@/api/axiosInstance";
 import { EventRegistration } from "@/types";
-import { AxiosError } from "axios";
 
 export const fetchEvents = async () => {
   const response = await axiosInstance.get("/events");
@@ -29,5 +28,35 @@ export const createEvent = async (event: EventRegistration) => {
       error: error.message,
       // ...error.response,
     };
+  }
+};
+
+export const createEvent1 = async (event: EventRegistration) => {
+  console.log("Event", JSON.stringify(event, null, 2));
+  try {
+    const response = await fetch(
+      `${process.env.BACKEND_API_ENDPOINT}/registrations`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.BACKEND_ADMIN_KEY}`,
+        },
+        body: JSON.stringify(event),
+      }
+    );
+    const data = await response.json();
+    console.log("✅ Response", JSON.stringify(data, null, 2));
+    //  return {
+    //      status: response.status,
+    //      data: data,
+    //  }
+  } catch (error: any) {
+    console.log("❌ Error", error);
+    // return {
+    //     status: error.status,
+    //     error: error.message,
+    //     // ...error.response,
+    // };
   }
 };

@@ -23,7 +23,7 @@ function EventCard({ event }: { event: EventProps }) {
                 className='w-full rounded-md lg:h-[60vh] '
             />
             <p className={`${ibmFont.className} lg:text-4xl text-2xl font-bold text-white`}>{event.name}</p>
-            <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Starts On: {startsOn.format("DD/MM/YYYY h:mm A")}</p>
+            <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Registration From: {startsOn.format("DD/MM/YYYY")}</p>
             {event.registrationStatus === "ONGOING" && event.registrationFee > 0 ? <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Registration Fee: {event.registrationFee}</p> : <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Free Registration</p>}
             {event.registrationStatus === "ONGOING" && event.teamSize > 1 ? <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Team Size: {event.teamSize}</p> : <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Solo Event</p>}
             <div className='flex gap-4 pt-4 w-full'>
