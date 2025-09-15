@@ -52,7 +52,7 @@ function EventCard({ event }: { event: EventProps }) {
                                 <GoogleDocsViewer docUrlOrId={event.rules[0]} />
                             </div> */}
                             {/* <Button title='View Rules' link={`/rules?docsId=${event.rules[0]}`} /> */}
-                            {event.rules[0].includes("docs.google.com") && <a
+                            {event.rules[0].includes("docs.google.com") ? <a
                                 href={`https://docs.google.com/document/d/${event.rules[0].split("/d/")[1].split("/")[0]
                                     }/export?format=pdf`}
                                 target="_blank"
@@ -64,7 +64,10 @@ function EventCard({ event }: { event: EventProps }) {
                                 >
                                     Download Rules As PDF
                                 </div>
-                            </a>}
+                            </a> : event.rules[0].includes("drive.google.com") ? <a href={event.rules[0]} target="_blank" rel="noopener noreferrer"
+                                className={`flex items-center justify-center ${ibmFont.className} text-white text-xl font-normal leading-[30px] text-center bg-[#FA861B] border-2 border-[#FFAE00] hover:shadow-[5px_5px_0px_0px_#FFAE00] w-full`} >
+                                View Rules
+                            </a> : <p>Rules Not Available</p>}
 
 
                         </DialogContent>

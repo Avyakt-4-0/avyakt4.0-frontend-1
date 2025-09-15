@@ -49,6 +49,7 @@ function Page({
     const searchParams = useSearchParams()
     const eventName = searchParams.get("name")
     const teamSize = Number(searchParams.get("teamSize") || "1")
+    const minTeamSize = Number(searchParams.get("minTeamSize") || teamSize)
     const eventRegistrationFee = Number(searchParams.get("registrationFee") || "0")
     const eventCategory = searchParams.get("category")
     const [userDetails, setUserDetails] = useState<{ name: string | null; email: string | null; image: string | null }>();
@@ -281,24 +282,20 @@ function Page({
                         {teamSize > 1 &&
                             Array.from({ length: teamSize - 1 }, (_, i) => (
                                 <div key={i} className='flex gap-4 w-full'>
-                                    {/* <Input
-                                        label={`Member ${i + 1} Name`}
-                                        error={errors.members?.[i]?.memberName?.message}
-                                        {...register(`members.${i}.memberName` as const, {
-                                            required: `Member ${i + 1} name is required`,
-                                        })}
-                                    /> */}
                                     <Input
                                         label={`Member ${i + 1} Email`}
                                         error={errors.members?.[i]?.memberEmail?.message}
                                         {...register(`members.${i}.memberEmail` as const, {
-                                            required: `Member ${i + 1} email is required`,
+                                            required:
+                                                i < (minTeamSize - 1)
+                                                    ? `Member ${i + 1} email is required`
+                                                    : false,
                                             pattern: {
                                                 value: /^[a-zA-Z0-9._%+-]+@giet\.edu$/i,
                                                 message: "Please use your student email",
                                             },
                                             validate: (value: string) => {
-                                                if (value === userDetails?.email) {
+                                                if (value && value === userDetails?.email) {
                                                     return "Don't use Team Leader email use another email";
                                                 }
                                                 return true;
@@ -307,6 +304,7 @@ function Page({
                                     />
                                 </div>
                             ))}
+
                         {eventRegistrationFee > 0 && <>
                             <Input
                                 label="Enter UPI Id"
