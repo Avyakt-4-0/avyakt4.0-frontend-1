@@ -69,8 +69,8 @@ function Page({
             teamSize: teamSize.toString(),
             upiId: "",
             transactionId: "",
-            leaderEmail: "",
-            leaderName: "",
+            leaderEmail: userDetails?.email || "",
+            leaderName: userDetails?.name || "",
             members: Array.from({ length: teamSize - 1 }, (_, i) => ({
                 memberEmail: "",
             })),
@@ -206,7 +206,7 @@ function Page({
                             label="Your Name / Team Lead Name"
                             error={errors.leaderName?.message}
                             {...register("leaderName", { required: "Leader name is required" })}
-                            value={userDetails?.name || ""}
+                        // defaultValue={userDetails?.name || ""}
                         // disabled={userDetails?.name === ""}
                         />
                         <Input
@@ -219,7 +219,7 @@ function Page({
                                     message: "Please use your student email to login in.",
                                 }
                             })}
-                            value={userDetails?.email || ""}
+                        // defaultValue={userDetails?.email || ""}
                         // disabled={userDetails?.email === ""}
                         />
                         {/* Phone Number */}
