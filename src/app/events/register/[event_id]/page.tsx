@@ -33,7 +33,7 @@ interface FormValues {
     upiId: string;
     transactionId: string;
 }
-export const whatsappGroupLinks: Record<string, string> = {
+const whatsappGroupLinks: Record<string, string> = {
     SPORTS: "https://chat.whatsapp.com/IZ5XjH8HxMJDdpluiQ8gNK?mode=ac_t",
     CULTURAL: "https://chat.whatsapp.com/LyONEKHhUzm8x8IjGQDibY?mode=ac_t",
     NONTECH: "https://chat.whatsapp.com/LuzUGBymOPu43rzAWdqn5Q?mode=ac_t",
