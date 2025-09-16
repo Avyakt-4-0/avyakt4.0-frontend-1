@@ -25,7 +25,7 @@ function EventCard({ event }: { event: EventProps }) {
             <p className={`${ibmFont.className} lg:text-2xl text-xl font-bold text-white`}>{event.name}</p>
             <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Registration From: {startsOn.format("DD/MM/YYYY")}</p>
             {event.registrationStatus === "ONGOING" && event.registrationFee > 0 ? <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Registration Fee: {event.registrationFee}</p> : <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Free Registration</p>}
-            {event.registrationStatus === "ONGOING" && event.teamSize > 1 ? <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Team Size: {event.teamSize}</p> : <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Solo Event</p>}
+            {event.registrationStatus === "ONGOING" && event.teamSize > 1 ? <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Team Size:{!event.minTeamSize ? event.teamSize : `${event.minTeamSize} to ${event.teamSize}`}</p> : <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Solo Event</p>}
             <div className='flex gap-4 pt-4 w-full'>
                 <div>
                     <Dialog>
@@ -68,12 +68,10 @@ function EventCard({ event }: { event: EventProps }) {
                                 className={`flex items-center justify-center ${ibmFont.className} text-white text-xl font-normal leading-[30px] text-center bg-[#FA861B] border-2 border-[#FFAE00] hover:shadow-[5px_5px_0px_0px_#FFAE00] w-full`} >
                                 View Rules
                             </a> : <p>Rules Not Available</p>}
-
-
                         </DialogContent>
                     </Dialog>
                 </div>
-                {event.registrationStatus === "ONGOING" ? <Button title="Register" link={`/events/register/${event.id}?name=${event.name}&teamSize=${event.teamSize}&registrationFee=${event.registrationFee}&category=${event.category}`} />
+                {event.registrationStatus === "ONGOING" ? <Button title="Register" link={`/events/register/${event.id}?name=${event.name}&teamSize=${event.teamSize}&registrationFee=${event.registrationFee}&category=${event.category}&minTeamSize=${event.minTeamSize}`} />
                     : <p className={`${ibmFont.className} lg:text-xl  font-bold text-black`}>Registration Closed 🚫</p>}
             </div>
         </div>
