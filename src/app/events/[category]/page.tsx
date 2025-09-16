@@ -1,5 +1,4 @@
 'use client'
-import axiosInstance from '@/api/axiosInstance'
 import ComingSoon from '@/components/ComingSoon'
 import { use, useEffect, useState, useTransition } from 'react'
 import { Event } from '@/types'
@@ -10,8 +9,6 @@ import { AnimatePresence } from 'motion/react'
 import { Skeleton } from '@/components/ui/skeleton'
 import { fetchEvents } from '@/lib/events/server-action'
 import Link from 'next/link'
-
-
 
 type FilterType = "ALL" | "BOYS" | "GIRLS" | "SOLO" | "TEAM"
 
@@ -60,7 +57,6 @@ export default function EventsByCategory({
     if (filteredEvents.length === 0 && !loading) {
         return <ComingSoon />
     }
-
 
     return (
         <div className="flex flex-col gap-4 px-4">

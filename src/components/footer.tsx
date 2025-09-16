@@ -37,10 +37,10 @@ export default function Footer() {
                                 <IoLogoInstagram className="text-white lg:text-4xl" />
                             </Link>
                             <Link href="https://www.linkedin.com/school/gietuniversitygunupur/" target="_blank">
-                                <FaLinkedin className="text-white lg:text-4xl" /> 
+                                <FaLinkedin className="text-white lg:text-4xl" />
                             </Link>
                             <Link href="https://www.facebook.com/gietuniversitygunupur/" target="_blank">
-                                <FaFacebook className="text-white lg:text-4xl" /> 
+                                <FaFacebook className="text-white lg:text-4xl" />
                             </Link>
                             <Link href="https://www.youtube.com/@AVYAKTGIETU" target="_blank">
                                 <FaYoutube className="text-white lg:text-4xl" />
@@ -51,9 +51,9 @@ export default function Footer() {
                     {/* list of indices */}
                     <div>
                         <p className="font-extrabold text-neutral-100/90">NAVIGATION</p>
-                        <Link href={"/about"} className="flex gap-2 items-center "> About Us Page</Link>
-                        <Link href={"/clubs"} className="flex gap-2 items-center">Clubs Page</Link>
-                        <Link href={"/team"} className="flex gap-2 items-center">Team Page</Link>
+                        <Link href={"/about-us"} className="flex gap-2 items-center "> About Us Page</Link>
+                        <Link href={"/#clubs"} className="flex gap-2 items-center">Clubs Page</Link>
+                        <Link href={"/dev-team"} className="flex gap-2 items-center">Team Page</Link>
                     </div>
                     <div>
                         <p className="font-extrabold text-neutral-100/90">EVENTS</p>
@@ -74,7 +74,7 @@ export default function Footer() {
                 <div className="flex justify-center items-center text-center lg:mb-4 lg:mt-0 mt-4 px-2 md:px-0">
                     <h2 className={bebasFont.className + " lg:text-4xl text-2xl"}>TRAVEL THROUGHOUT THE MULTIVERSE WITH AVYAKT 4.0</h2>
                 </div>
-                
+
                 <div className="flex justify-center items-center">
                     <h3 className={ibmPlexMono.className + " font-bold text-[12px] md:text-[14px] lg:text-[16px] leading-[16px] md:leading-[18px] lg:leading-[20px] text-black"}>
                         © COPYRIGHT WITH AVAYKT 4.0 CSE, GIETU - {new Date().getFullYear()} | MADE WITH ❤️ BY TEAM AVYAKT

@@ -4,9 +4,8 @@ import React from 'react'
 import { IBM_Plex_Mono } from 'next/font/google'
 import dayjs from "dayjs";
 import Button from './Button'
-import { TextAnimate } from "@/components/magicui/text-animate";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import GoogleDocsViewer from '@/components/google_docs_viewer';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+
 const ibmFont = IBM_Plex_Mono({
     weight: '600',
     subsets: ['latin'],
@@ -25,7 +24,7 @@ function EventCard({ event }: { event: EventProps }) {
             <p className={`${ibmFont.className} lg:text-2xl text-xl font-bold text-white`}>{event.name}</p>
             <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Registration From: {startsOn.format("DD/MM/YYYY")}</p>
             {event.registrationStatus === "ONGOING" && event.registrationFee > 0 ? <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Registration Fee: {event.registrationFee}</p> : <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Free Registration</p>}
-            {event.registrationStatus === "ONGOING" && event.teamSize > 1 ? <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Team Size:{!event.minTeamSize ? event.teamSize : `${event.minTeamSize} to ${event.teamSize}`}</p> : <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Solo Event</p>}
+            {event.registrationStatus === "ONGOING" && event.teamSize > 1 ? <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Team Size: {!event.minTeamSize || event.minTeamSize === event.teamSize ? event.teamSize : `${event.minTeamSize} to ${event.teamSize}`}</p> : <p className={`${ibmFont.className} lg:text-xl  font-bold text-white`}>Solo Event</p>}
             <div className='flex gap-4 pt-4 w-full'>
                 <div>
                     <Dialog>
@@ -40,18 +39,6 @@ function EventCard({ event }: { event: EventProps }) {
                             <DialogHeader>
                                 <DialogTitle className={`${ibmFont.className} lg:text-xl text-2xl  font-bold text-green-500 text-center`}>Rules</DialogTitle>
                             </DialogHeader>
-                            {/* <div>
-                                {event.rules.map((rule, index) => (
-                                    <TextAnimate
-                                        animation="slideLeft"
-                                        by='character'
-                                        className={`${ibmFont.className} lg:text-xl text-sm  font-bold text-green-500`} key={index}>{`${index + 1}. ${rule}`}</TextAnimate>
-                                ))}
-                            </div> */}
-                            {/* <div>
-                                <GoogleDocsViewer docUrlOrId={event.rules[0]} />
-                            </div> */}
-                            {/* <Button title='View Rules' link={`/rules?docsId=${event.rules[0]}`} /> */}
                             {event.rules[0].includes("docs.google.com") ? <a
                                 href={`https://docs.google.com/document/d/${event.rules[0].split("/d/")[1].split("/")[0]
                                     }/export?format=pdf`}

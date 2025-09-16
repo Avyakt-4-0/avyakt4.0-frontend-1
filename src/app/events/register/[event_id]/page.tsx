@@ -211,13 +211,13 @@ function Page({
 
                         {/* Leader Name */}
                         <Input
-                            label="Your Name / Team Lead Name"
+                            label={teamSize > 1 ? "Your Name / Team Lead Name" : "Your Name"}
                             error={errors.leaderName?.message}
                             {...register("leaderName", { required: "Leader name is required" })}
                             readOnly
                         />
                         <Input
-                            label='Your Email / Team Leader Email'
+                            label={teamSize > 1 ? "Your Email / Team Leader Email" : "Your Email"}
                             error={errors.leaderEmail?.message}
                             {...register("leaderEmail", {
                                 required: "Email is required",
@@ -227,8 +227,6 @@ function Page({
                                 }
                             })}
                             readOnly
-                        // defaultValue={userDetails?.email || ""}
-                        // disabled={userDetails?.email === ""}
                         />
                         {/* Phone Number */}
                         <Input
@@ -305,7 +303,9 @@ function Page({
                                 </div>
                             ))}
 
-                        {eventRegistrationFee > 0 && <>
+                        {eventRegistrationFee > 0 && <div
+                            className='lg:mb-4'
+                        >
                             <Input
                                 label="Enter UPI Id"
                                 error={errors.upiId?.message}
@@ -315,8 +315,9 @@ function Page({
                                 label="Enter Transaction Id"
                                 error={errors.transactionId?.message}
                                 {...register("transactionId", { required: "Transaction ID is required" })}
+                                className='mb-2'
                             />
-                        </>}
+                        </div>}
                         {eventRegistrationFee == 0 && <button
                             type="submit"
                             className="mt-6 px-6 py-2 bg-[#F5610D54] text-white font-bold border-4 border-[#AF6338]"
@@ -327,6 +328,7 @@ function Page({
 
                     {/* Payment Instructions */}
                     {eventRegistrationFee > 0 && <div className='flex flex-col gap-4 lg:w-1/2 w-full'>
+                        <p className={`${ibmFont.className} text-center text-[#F8861EA6]`}>{`Scan the QR Code to Pay ${eventRegistrationFee} for the event.`}</p>
                         <div className='flex justify-center items-center p-4 border-4 border-[#652703]'>
                             <Image src="/images/qr.jpg" alt="payment" width={500} height={500} />
                         </div>

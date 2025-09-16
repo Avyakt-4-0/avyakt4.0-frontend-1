@@ -58,7 +58,7 @@ const devSections: DevSection[] = [
                 img: "/images/dev-team/abhijit.png",
                 role: "Frontend Developer",
                 github: "https://github.com/avijit969",
-                linkedin: "",
+                linkedin: "https://www.linkedin.com/in/abhijit-pradhan-948132259?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
             },
         ],
     },
@@ -94,11 +94,11 @@ const devSections: DevSection[] = [
                 linkedin: "",
             },
             {
-                name: "OMM SANDEEP",
+                name: "OM SUNDEEP",
                 img: "/images/dev-team/om.svg",
                 role: "Android Developer",
-                github: "",
-                linkedin: "",
+                github: "https://github.com/Sundeep-Sahoo",
+                linkedin: "https://www.linkedin.com/in/om-sundeep-sahoo-ba0376270?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BwfpgxCcTTYm%2B8qPWawcCaw%3D%3D",
             },
 
         ]
