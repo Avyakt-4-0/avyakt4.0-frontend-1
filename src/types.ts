@@ -13,6 +13,7 @@ type Event = {
   genderCategory: GenderCategory;
   registrationFee: number;
   teamSize: number;
+  minTeamSize: number;
   rules: string[];
   thumbnail: string;
   startsOn: string;
