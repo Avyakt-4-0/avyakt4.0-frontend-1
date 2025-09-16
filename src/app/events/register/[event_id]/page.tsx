@@ -261,12 +261,12 @@ function Page({
                                 )}
                             />
 
-                            <Controller
+                            {teamSize > 1 && <Controller
                                 control={control}
                                 name="teamSize"
                                 render={({ field }) => (
                                     <Select
-                                        label="Team Size"
+                                        label="Max Team Size"
                                         options={Array.from({ length: 11 }, (_, i) => ({
                                             value: (i + 1).toString(),
                                             label: (i + 1).toString(),
@@ -275,7 +275,7 @@ function Page({
                                         isDisabled
                                     />
                                 )}
-                            />
+                            />}
                         </div>
 
                         {/* Dynamic Player Names */}
