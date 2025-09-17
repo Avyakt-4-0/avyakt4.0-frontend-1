@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 
-const protectedRoutes = ["/register", "/events/register"];
+const protectedRoutes = ["/register", "/events/register", "/participation"];
 
 export default auth((req) => {
   const path = req.nextUrl.pathname;

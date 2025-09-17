@@ -7,7 +7,7 @@ import localFont from 'next/font/local';
 import Link from 'next/link';
 import { getUserDetails } from '@/lib/auth/getUserDetailsServerAction';
 import { checkIsAuthenticated } from '@/lib/auth/checkIsAutheticatedServerAction';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ibmFont = IBM_Plex_Mono({
@@ -22,7 +22,7 @@ export default function NavBar() {
     const [userDetails, setUserDetails] = useState<{ name: string | null; email: string | null; image: string | null }>();
     const [showProfileModal, setShowProfileModal] = useState(false);
     const router = useRouter();
-
+    const pathname = usePathname();
     useEffect(() => {
         const fetchAuthStatusAndDetails = async () => {
             const authStatus = await checkIsAuthenticated();
@@ -39,6 +39,7 @@ export default function NavBar() {
 
     const navItems = [
         { name: 'Events', link: '/events' },
+        { name: 'Participation', link: '/participation' },
         { name: 'Clubs', link: '/#clubs' },
         { name: 'Dev Team', link: '/dev-team' },
         { name: 'About Us', link: '/about-us' },
@@ -75,9 +76,9 @@ export default function NavBar() {
                             key={index}
                             whileHover={{ scale: 1.05 }}
                             transition={{ type: 'spring', stiffness: 200 }}
-                            className="text-[#F8861E] font-semibold text-2xl border-[#F8861E] border-2 p-1 bg-[#F5610D4D] w-[236px] hover:bg-[#F8861E] hover:text-white transition-all duration-300"
+                            className={"text-[#F8861E] font-semibold text-2xl border-[#F8861E] border-2 p-1 bg-[#F5610D4D] w-[200px] hover:bg-[#F8861E] hover:text-white transition-all duration-300" + (pathname === item.link ? ' bg-[#F8861E] text-white' : '')}
                         >
-                            <Link href={item.link} className={`${ibmFont.className} text-center block`}>
+                            <Link href={item.link} className={`${ibmFont.className} text-center block lg:text-xl text-xl`}>
                                 {item.name}
                             </Link>
                         </motion.li>
@@ -191,11 +192,11 @@ export default function NavBar() {
                                         visible: { opacity: 1, x: 0 },
                                     }}
                                     transition={{ duration: 0.4, ease: "easeOut" }}
-                                    className="text-[#F8861E] font-semibold text-2xl border-[#F8861E] border-2 p-1 bg-[#F5610D4D] hover:bg-[#F8861E] hover:text-white transition-all duration-300 w-32"
+                                    className={"text-[#F8861E] font-semibold text-2xl border-[#F8861E] border-2 p-1 bg-[#F5610D4D] hover:bg-[#F8861E] hover:text-white transition-all duration-300 w-[50vw]" + (pathname === item.link ? ' bg-[#F8861E] text-white' : '')}
                                 >
                                     <Link
                                         href={item.link}
-                                        className={`${ibmFont.className} text-center block`}
+                                        className={`${ibmFont.className} text-center block text-xl`}
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         {item.name}

@@ -10,7 +10,7 @@ export const fetchEvents = async () => {
 
 export const createEvent = async (event: EventRegistration) => {
   try {
-    const members = event?.members?.filter(x => !!x.email)
+    const members = event?.members?.filter((x) => !!x.email);
     const response = await fetch(
       `${process.env.BACKEND_API_ENDPOINT}/registrations`,
       {
@@ -66,4 +66,19 @@ export const createEvent = async (event: EventRegistration) => {
       message: error.message || "Unexpected error occurred",
     };
   }
+};
+
+export const getRegistrationDetails = async (email: string) => {
+  const response = await fetch(
+    `${process.env.BACKEND_API_ENDPOINT}/registrations/user/${email}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.BACKEND_ADMIN_KEY}`,
+      },
+    }
+  );
+  const data = await response.json();
+  return data;
 };

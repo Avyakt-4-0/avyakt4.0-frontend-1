@@ -100,9 +100,9 @@ export default function EventsByCategory({
                 <AnimatePresence >
                     {isPending ?
                         <div className="flex flex-col gap-4 lg:flex-row lg:w-[95vw] justify-center ">
-                            <Skeleton className="h-[70vh] w-[100vw] rounded-lg" />
-                            <Skeleton className="h-[70vh] w-[100vw] rounded-lg" />
-                            <Skeleton className="h-[70vh] w-[100vw] rounded-lg" />
+                            <Skeleton className="h-[70vh] w-[90vw] rounded-lg" />
+                            <Skeleton className="h-[70vh] w-[90vw] rounded-lg" />
+                            <Skeleton className="h-[70vh] w-[90vw] rounded-lg" />
                         </div> : filteredEvents.length > 0 && filteredEvents.map((event) => (
                             <motion.div
                                 key={event.id}
