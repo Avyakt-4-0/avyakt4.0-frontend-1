@@ -68,7 +68,7 @@ const devSections: DevSection[] = [
         members: [
             {
                 name: "AYUSHMAN",
-                img: "/images/dev-team/ayushman.svg",
+                img: "/images/dev-team/ayushman.png",
                 role: "Backend Developer",
                 github: "https://github.com/AyushmanTripathy",
                 linkedin: "",

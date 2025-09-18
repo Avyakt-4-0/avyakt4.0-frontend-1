@@ -59,7 +59,7 @@ function EventCard({ event }: { event: EventProps }) {
                     </Dialog>
                 </div>
                 {event.registrationStatus === "ONGOING" ? <Button title="Register" link={`/events/register/${event.id}?name=${event.name}&teamSize=${event.teamSize}&registrationFee=${event.registrationFee}&category=${event.category}&minTeamSize=${event.minTeamSize}`} />
-                    : <p className={`${ibmFont.className} lg:text-xl  font-bold text-black`}>Registration Closed 🚫</p>}
+                    : <p className={`${ibmFont.className} lg:text-lg text-sm  font-bold text-black`}>Registration Closed 🚫</p>}
             </div>
         </div>
     )

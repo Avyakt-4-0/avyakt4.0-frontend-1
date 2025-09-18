@@ -25,10 +25,11 @@ type EventRegistration = {
   eventId: string;
   leadEmail: string;
   upiId?: string;
+  teamName?: string;
   members: Array<{
     name?: string;
     email: string;
     phone?: string;
   }>;
 };
-export type { Event, EventRegistration };
+export type { Event, EventRegistration, Category as EventCategory };

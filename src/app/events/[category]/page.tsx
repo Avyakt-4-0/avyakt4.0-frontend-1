@@ -7,8 +7,9 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { AnimatePresence } from 'motion/react'
 import { Skeleton } from '@/components/ui/skeleton'
-import { fetchEvents } from '@/lib/events/server-action'
+import { getEventsByCategory } from '@/lib/events/server-action'
 import Link from 'next/link'
+import { ArrowUp, ArrowUpWideNarrowIcon } from 'lucide-react'
 
 type FilterType = "ALL" | "BOYS" | "GIRLS" | "SOLO" | "TEAM"
 
@@ -33,13 +34,10 @@ export default function EventsByCategory({
     useEffect(() => {
         const fetchAllEvents = async () => {
             startTransition(async () => {
-                const data = await fetchEvents()
-                const filteredEvents = data.filter((event: Event) => event.category === encodedCategory[category as keyof typeof encodedCategory])
-                console.log(filteredEvents)
-                setEvents(filteredEvents)
-                if (filteredEvents.length === 0) {
-                    setLoading(false)
-                }
+                const events = await getEventsByCategory(encodedCategory[category as keyof typeof encodedCategory])
+                console.log(events)
+                setEvents(events)
+                setLoading(false)
             })
         }
         fetchAllEvents()
@@ -120,6 +118,11 @@ export default function EventsByCategory({
                         ))}
                 </AnimatePresence>
             </motion.div>
+            {isPending ? null : <div className="fixed bottom-4 right-4 z-50 bg-[#F4934359] rounded-full p-2"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+                <ArrowUp className="lg:w-16 lg:h-16 w-8 h-8 cursor-pointer text-white" />
+            </div>}
         </div >
     )
 }

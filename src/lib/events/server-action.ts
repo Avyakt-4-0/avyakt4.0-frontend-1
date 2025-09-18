@@ -1,7 +1,7 @@
 "use server";
 
 import axiosInstance from "@/api/axiosInstance";
-import { EventRegistration } from "@/types";
+import { EventCategory, EventRegistration } from "@/types";
 
 export const fetchEvents = async () => {
   const response = await axiosInstance.get("/events");
@@ -81,4 +81,9 @@ export const getRegistrationDetails = async (email: string) => {
   );
   const data = await response.json();
   return data;
+};
+
+export const getEventsByCategory = async (category: string) => {
+  const response = await axiosInstance.get(`/events?category=${category}`);
+  return response.data;
 };

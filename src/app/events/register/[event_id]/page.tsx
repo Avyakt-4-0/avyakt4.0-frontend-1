@@ -99,6 +99,7 @@ function Page({
                     email: member.memberEmail,
                 })) || [];
                 const response = await createEvent({
+                    teamName: data.teamName,
                     eventId: event_id,
                     leadEmail: data.leaderEmail,
                     upiId: data.transactionId,
