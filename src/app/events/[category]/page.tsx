@@ -55,7 +55,8 @@ export default function EventsByCategory({
     if (filteredEvents.length === 0 && !loading) {
         return <ComingSoon />
     }
-
+    const priority = { "ONGOING": 0, "CLOSED": 1 }
+    filteredEvents.sort((a, b) => priority[a.registrationStatus as keyof typeof priority] - priority[b.registrationStatus as keyof typeof priority])
     return (
         <div className="flex flex-col gap-4 px-4">
             <div className="flex space-x-3  overflow-x-auto pb-2">
